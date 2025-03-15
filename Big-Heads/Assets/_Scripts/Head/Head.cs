@@ -5,12 +5,12 @@ using UnityEngine;
 public class Head : MonoBehaviour, IDamageable
 {
     public int health;
+    private int maxHealth;
 
     [SerializeField] private float maxSize;
     [SerializeField] private float minSize;
     
     private Rigidbody2D rb;
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
