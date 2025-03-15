@@ -67,7 +67,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8325976683638316747}
         m_TargetAssemblyTypeName: Aim, Assembly-CSharp
-        m_MethodName: PlayerAim
+        m_MethodName: Aim
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

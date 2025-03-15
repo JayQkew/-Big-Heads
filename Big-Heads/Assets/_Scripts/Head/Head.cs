@@ -20,12 +20,12 @@ public class Head : MonoBehaviour, IDamageable
     [SerializeField] private float thowForceMult;
     
     private SoftBody softBody;
-    private Aim aim;
+    private Player _player;
 
     private void Awake()
     {
         softBody = gameObject.GetComponentInChildren<SoftBody>();
-        aim = GetComponentInParent<Aim>();
+        _player = GetComponentInParent<Player>();
     }
 
     private void Start()
@@ -43,7 +43,7 @@ public class Head : MonoBehaviour, IDamageable
     {
         if (ctx.performed && headAttached)
         {
-            softBody.AddForce(aim.dir * thowForceMult, ForceMode2D.Impulse);
+            softBody.AddForce(_player.aim * thowForceMult, ForceMode2D.Impulse);
             headAttached = false;
         }
     }
