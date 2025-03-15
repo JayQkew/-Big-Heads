@@ -49,7 +49,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 5857644237302178198}
   moveSpeed: 5
+  jumpForce: 100
+  rayDist: 0.5
+  OffsetX: 0
+  OffsetY: 0
+  gravity: 9.81
+  isGrounded: 0
+  isJumping: 0
+  hitLeft: 0
+  hitRight: 0
   actionAsset: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  theLayer: 3
 --- !u!50 &5857644237302178198
 Rigidbody2D:
   serializedVersion: 5
@@ -200,7 +210,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.22891915, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

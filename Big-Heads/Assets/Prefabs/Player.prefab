@@ -62,7 +62,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8224093983786828759}
+      - m_Target: {fileID: 5807663943496927850}
         m_TargetAssemblyTypeName: BodyMovement, Assembly-CSharp
         m_MethodName: MoveCube
         m_Mode: 0
@@ -102,7 +102,7 @@ MonoBehaviour:
     m_ActionName: Player/Teleport
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8224093983786828759}
+      - m_Target: {fileID: 5807663943496927850}
         m_TargetAssemblyTypeName: BodyMovement, Assembly-CSharp
         m_MethodName: Jump
         m_Mode: 0
@@ -214,6 +214,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 842251125013463897}
     m_Modifications:
+    - target: {fileID: 250793439605760412, guid: 1b23292c865d5ab4f964b4145fada4a7, type: 3}
+      propertyPath: OffsetX
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 250793439605760412, guid: 1b23292c865d5ab4f964b4145fada4a7, type: 3}
+      propertyPath: OffsetY
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 250793439605760412, guid: 1b23292c865d5ab4f964b4145fada4a7, type: 3}
+      propertyPath: gravity
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 250793439605760412, guid: 1b23292c865d5ab4f964b4145fada4a7, type: 3}
+      propertyPath: jumpForce
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 250793439605760412, guid: 1b23292c865d5ab4f964b4145fada4a7, type: 3}
+      propertyPath: moveSpeed
+      value: 550
+      objectReference: {fileID: 0}
     - target: {fileID: 1263441233069119024, guid: 1b23292c865d5ab4f964b4145fada4a7, type: 3}
       propertyPath: m_Name
       value: Body
@@ -258,6 +278,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5857644237302178198, guid: 1b23292c865d5ab4f964b4145fada4a7, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857644237302178198, guid: 1b23292c865d5ab4f964b4145fada4a7, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -268,6 +296,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2078998830231522141, guid: 1b23292c865d5ab4f964b4145fada4a7, type: 3}
   m_PrefabInstance: {fileID: 6044403390355188726}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5807663943496927850 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 250793439605760412, guid: 1b23292c865d5ab4f964b4145fada4a7, type: 3}
+  m_PrefabInstance: {fileID: 6044403390355188726}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19169c2a944d65341b04e41a43a32590, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7914152205650955452
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -282,6 +321,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1251208220523788415, guid: 07f6d9ca2246d7144b5a88dbf7a75442, type: 3}
       propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1251208220523788415, guid: 07f6d9ca2246d7144b5a88dbf7a75442, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6504961404299766318, guid: 07f6d9ca2246d7144b5a88dbf7a75442, type: 3}
