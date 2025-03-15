@@ -5,6 +5,7 @@ public class shooting : MonoBehaviour
     [SerializeField] private Player playerScript;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform GunEnd;
 
     [SerializeField] private float adjust, ShootForce, fireRate;
     [SerializeField] private bool CanFire = true;
@@ -25,7 +26,7 @@ public class shooting : MonoBehaviour
 
     public void ShotsFired()
     {
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        GameObject bullet = Instantiate(bulletPrefab, GunEnd.position, Quaternion.identity);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(playerScript.aim * ShootForce, ForceMode2D.Impulse);
         
