@@ -198,6 +198,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1336485355999581048, guid: 0fe2ccace1dc91f489dee21ce5140a8e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 155883515}
+    - target: {fileID: 1336485355999581048, guid: 0fe2ccace1dc91f489dee21ce5140a8e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 155883515}
+    - target: {fileID: 1336485355999581048, guid: 0fe2ccace1dc91f489dee21ce5140a8e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MoveCube
+      objectReference: {fileID: 0}
+    - target: {fileID: 1336485355999581048, guid: 0fe2ccace1dc91f489dee21ce5140a8e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Jump
+      objectReference: {fileID: 0}
     - target: {fileID: 2044648791349618543, guid: 0fe2ccace1dc91f489dee21ce5140a8e, type: 3}
       propertyPath: m_Name
       value: Player
@@ -207,6 +223,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fe2ccace1dc91f489dee21ce5140a8e, type: 3}
+--- !u!114 &155883515 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5807663943496927850, guid: 0fe2ccace1dc91f489dee21ce5140a8e, type: 3}
+  m_PrefabInstance: {fileID: 151282312}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19169c2a944d65341b04e41a43a32590, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &500862139
 GameObject:
   m_ObjectHideFlags: 0

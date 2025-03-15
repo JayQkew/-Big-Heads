@@ -34,6 +34,8 @@ public class SoftBody : MonoBehaviour
     private Vector2[] _uvs;
     private int[] _tris;
 
+    public List<SpringJoint2D> attachJoints = new List<SpringJoint2D>();
+
     private void Start()
     {
         oldRadius = radius;
@@ -106,7 +108,6 @@ public class SoftBody : MonoBehaviour
             GameObject node = new GameObject("SoftBodyNode");
             node.tag = "SoftBodyNode";
 
-
             Rigidbody2D rb = node.AddComponent<Rigidbody2D>();
             rb.freezeRotation = true;
             nodes_rb.Add(rb);
@@ -123,6 +124,8 @@ public class SoftBody : MonoBehaviour
 
             node.transform.SetParent(nodeParent == null ? transform : nodeParent);
 
+            SpringJoint2D attachJoint = node.AddComponent<SpringJoint2D>();
+            attachJoints.Add(attachJoint);
 
             nodes.Add(node);
         }
@@ -261,5 +264,26 @@ public class SoftBody : MonoBehaviour
         {
             rb.AddForce(force, mode);
         }
+    }
+
+    public void MoveSlime(Vector2 newPosition)
+    {
+        //find difference from center of slime
+        //store those differences
+        Vector2[] dif = new Vector2[nodes.Count];
+        for (int i = 0; i < nodes.Count; i++)
+        {
+            dif[i] = nodes[i].transform.position - transform.position;
+            
+            nodes[i].transform.position = newPosition + dif[i];
+        }
+        
+        //find new position
+        //apply differences to the new postion
+    }
+
+    public void AttachSlime()
+    {
+        
     }
 }
