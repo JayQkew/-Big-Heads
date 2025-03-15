@@ -35,6 +35,10 @@ public class SoftBody : MonoBehaviour
     private int[] _tris;
 
     public List<SpringJoint2D> attachJoints = new List<SpringJoint2D>();
+    public float attachFreq;
+    public float attachDamp;
+
+    public float nodeWeight;
 
     private void Start()
     {
@@ -110,6 +114,7 @@ public class SoftBody : MonoBehaviour
 
             Rigidbody2D rb = node.AddComponent<Rigidbody2D>();
             rb.freezeRotation = true;
+            rb.mass = nodeWeight;
             nodes_rb.Add(rb);
 
             CircleCollider2D cc = node.AddComponent<CircleCollider2D>();
@@ -125,6 +130,8 @@ public class SoftBody : MonoBehaviour
             node.transform.SetParent(nodeParent == null ? transform : nodeParent);
 
             SpringJoint2D attachJoint = node.AddComponent<SpringJoint2D>();
+            attachJoint.frequency = attachFreq;
+            attachJoint.dampingRatio = attachDamp;
             attachJoints.Add(attachJoint);
 
             nodes.Add(node);

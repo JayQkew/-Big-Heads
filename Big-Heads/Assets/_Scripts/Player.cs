@@ -36,7 +36,8 @@ public class Player : MonoBehaviour
             SoftBody softBody =  head.GetChild(0).GetComponentInChildren<SoftBody>();
             foreach (SpringJoint2D joint in softBody.attachJoints)
             {
-                joint.connectedBody = body.GetChild(1).GetComponentInChildren<Rigidbody2D>();
+                joint.enabled = true;
+                joint.connectedBody = body.GetChild(1).GetComponent<Rigidbody2D>();
                 joint.distance = 0;
             }
         }
@@ -45,7 +46,7 @@ public class Player : MonoBehaviour
             SoftBody softBody =  head.GetChild(0).GetComponentInChildren<SoftBody>();
             foreach (SpringJoint2D joint in softBody.attachJoints)
             {
-                joint.connectedBody = null;
+                joint.enabled = false;
             } }
     }
 }
