@@ -2,15 +2,19 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class BodyMovement : MonoBehaviour
 {
    [SerializeField] private Rigidbody2D rb;
    [SerializeField] private float moveSpeed = 5f, jumpForce = 100f, rayDist = 0.5f, OffsetX, OffsetY;
    [SerializeField] private float gravity = 9.81f;
-   [SerializeField] private bool isGrounded, canJump, hitLeft, hitRight;
+   [SerializeField] private bool isGrounded;
+   [FormerlySerializedAs("canJurmp")] [SerializeField] private bool isJumping;
+   [SerializeField] private bool hitLeft, hitRight;
    private Vector2 direction, Movement;
    [SerializeField] private InputActionAsset actionAsset;
+   [SerializeField] private shooting shootingscript;
    
    [SerializeField] private int theLayer = 3;
    private int targetLayerJump;
@@ -24,8 +28,18 @@ public class BodyMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    { 
-        Movement = new Vector2(direction.x* moveSpeed, -rb.gravityScale);
+    {
+        // if (!isJumping)
+        // {
+        //     Movement = new Vector2(direction.x* moveSpeed, -rb.gravityScale);
+        // }
+        // else
+        // {
+        //     Movement = new Vector2(direction.x* moveSpeed, rb.linearVelocity.y);
+        // 
+        Movement = new Vector2(direction.x* moveSpeed, rb.linearVelocity.y); 
+        
+      
         
         Vector2 BottomLeft = new Vector2(transform.position.x - OffsetX, transform.position.y- OffsetY);
         Vector2 BottomRight = new Vector2(transform.position.x + OffsetX, transform.position.y  - OffsetY);
@@ -36,13 +50,13 @@ public class BodyMovement : MonoBehaviour
         hitRight = Physics2D.Raycast(BottomRight, Vector2.down, rayDist, targetLayerJump);
         if (hitLeft || hitRight)
         {
-            canJump = true;
+            isJumping = false;
             isGrounded = true;
             rb.gravityScale = 0f;
         }
         else if (!hitLeft && !hitRight)
         {
-            canJump = false;
+            isJumping = true;
             isGrounded = false;
             rb.gravityScale = gravity;
         }
@@ -50,13 +64,14 @@ public class BodyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + Movement* Time.deltaTime);
+        rb.linearVelocity  = new Vector2(Movement.x * Time.fixedDeltaTime, rb.linearVelocity.y);
     }
 
     public void MoveCube(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
+           
             Vector2 PlayerInput = context.ReadValue<Vector2>();
             direction.x = PlayerInput.x;
             direction.y = PlayerInput.y;
@@ -71,8 +86,17 @@ public class BodyMovement : MonoBehaviour
     {
         if (context.performed && isGrounded)
         {
-           Debug.Log("Hello");
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+           isJumping = true;
+            Debug.Log("Hello");
+            rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+        }
+    }
+
+    public void Shooting(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            shootingscript.ShotsFired();
         }
     }
 
