@@ -1,21 +1,36 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using Random = Unity.Mathematics.Random;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class Head : MonoBehaviour, IDamageable
 {
     public int health;
-    private int maxHealth;
-
+    [SerializeField] private int maxHealth;
+    [Space(10)]
     [SerializeField] private float maxSize;
     [SerializeField] private float minSize;
-    
-    private Rigidbody2D rb;
+    [Space(10)] [SerializeField] private float radiusChangeSpeed;
+    private float oldSize;
+
+    private SoftBody softBody;
+
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+        softBody = gameObject.GetComponentInChildren<SoftBody>();
     }
 
+    private void Start()
+    {
+        minSize = softBody.radius;
+    }
+    
+    public void Expand(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed) softBody.radius = maxSize;
+        else if (ctx.canceled) softBody.radius = minSize;
+    }
+    
     public void Damage(int dmg)
     {
         health -= dmg;
