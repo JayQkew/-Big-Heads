@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-public class SoftBody : MonoBehaviour
+public class SoftBody : MonoBehaviour, IDamageable
 {
     [Range(3, 40)] public int numberOfNodes = 10;
     public float oldRadius = 3;
@@ -287,5 +287,11 @@ public class SoftBody : MonoBehaviour
         
         //find new position
         //apply differences to the new postion
+    }
+
+    public void Damage(int dmg)
+    {
+        transform.GetComponentInParent<Head>().Damage(dmg);
+            
     }
 }

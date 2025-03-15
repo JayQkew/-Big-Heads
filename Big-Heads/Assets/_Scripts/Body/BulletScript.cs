@@ -21,6 +21,7 @@ public class BulletScript : MonoBehaviour
         if (collision.transform.GetComponent<IDamageable>() != null)
         {
             collision.transform.GetComponent<IDamageable>().Damage(Damage);
+            Debug.Log("sdlkfalsdf");
         }
         
         Destroy(gameObject);

@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Random = Unity.Mathematics.Random;
+using UnityEngine.SceneManagement;
 
 public class Head : MonoBehaviour, IDamageable
 {
@@ -52,7 +53,7 @@ public class Head : MonoBehaviour, IDamageable
         health -= dmg;
         if (health <= 0)
         {
-            Debug.Log("Player Died");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
