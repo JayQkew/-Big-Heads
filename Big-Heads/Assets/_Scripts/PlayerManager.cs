@@ -31,7 +31,6 @@ public class PlayerManager : MonoBehaviour
         
         playerInput.transform.position = _spawnPoints[playerCount].position;
         
-        playerInput.GetComponent<Player>().healthDisplay = playerHealth[playerCount];
         Debug.Log("Joined");
         playerCount++;
     }

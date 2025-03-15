@@ -320,6 +320,7 @@ MonoBehaviour:
   headAttached: 1
   head: {fileID: 8452259550989493}
   body: {fileID: 5708346269713211563}
+  healthDisplay: {fileID: 0}
 --- !u!1 &2922260786953856025
 GameObject:
   m_ObjectHideFlags: 0
