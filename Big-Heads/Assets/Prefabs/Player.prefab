@@ -580,7 +580,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7725730877089922923, guid: 07f6d9ca2246d7144b5a88dbf7a75442, type: 3}
       propertyPath: thowForceMult
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7725730877089922923, guid: 07f6d9ca2246d7144b5a88dbf7a75442, type: 3}
       propertyPath: radiusChangeSpeed
