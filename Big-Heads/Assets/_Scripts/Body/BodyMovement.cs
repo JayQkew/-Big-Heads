@@ -14,6 +14,7 @@ public class BodyMovement : MonoBehaviour
    [SerializeField] private bool hitLeft, hitRight;
    private Vector2 direction, Movement;
    [SerializeField] private InputActionAsset actionAsset;
+   [SerializeField] private shooting shootingscript;
    
    [SerializeField] private int theLayer = 3;
    private int targetLayerJump;
@@ -88,6 +89,14 @@ public class BodyMovement : MonoBehaviour
            isJumping = true;
             Debug.Log("Hello");
             rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+        }
+    }
+
+    public void Shooting(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            shootingscript.ShotsFired();
         }
     }
 
