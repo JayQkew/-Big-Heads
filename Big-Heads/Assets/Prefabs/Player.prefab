@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 842251125013463897}
   - component: {fileID: 1336485355999581048}
+  - component: {fileID: 8325976683638316747}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -63,7 +64,19 @@ MonoBehaviour:
     m_ActionId: 351f2ccd-1f9f-44bf-9bec-d62ac5c5f408
     m_ActionName: Player/Move
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8325976683638316747}
+        m_TargetAssemblyTypeName: Aim, Assembly-CSharp
+        m_MethodName: PlayerAim
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 6b444451-8a00-4d00-a97e-f47457f736a8
     m_ActionName: Player/Aim
   - m_PersistentCalls:
@@ -134,11 +147,40 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 98470447-3868-481b-a208-5df715ba9379
     m_ActionName: Player/Expand
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 496513942404019159}
+        m_TargetAssemblyTypeName: Head, Assembly-CSharp
+        m_MethodName: Throw
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6e2c76b2-282c-4b9e-a80f-f4a0cf4c77f0
+    m_ActionName: 'Player/Throw[/DualShock4GamepadHID/rightShoulder,/DualShock4GamepadHID/leftShoulder]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &8325976683638316747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044648791349618543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44c55c01d34796c46a843fd46afa2398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dir: {x: 0, y: 0}
 --- !u!1001 &7914152205650955452
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -162,6 +204,10 @@ PrefabInstance:
     - target: {fileID: 7316667247908739332, guid: 07f6d9ca2246d7144b5a88dbf7a75442, type: 3}
       propertyPath: radiusChangeSpeed
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7725730877089922923, guid: 07f6d9ca2246d7144b5a88dbf7a75442, type: 3}
+      propertyPath: thowForceMult
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7725730877089922923, guid: 07f6d9ca2246d7144b5a88dbf7a75442, type: 3}
       propertyPath: radiusChangeSpeed

@@ -255,12 +255,11 @@ public class SoftBody : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, radius);
     }
 
-    public void SetFrequency(float frequency)
+    public void AddForce(Vector2 force, ForceMode2D mode = ForceMode2D.Force)
     {
-        foreach (SpringJoint2D spring in _springJoints)
+        foreach (Rigidbody2D rb in nodes_rb)
         {
-            this.frequency = frequency;
-            spring.frequency = frequency;
+            rb.AddForce(force, mode);
         }
     }
 }
