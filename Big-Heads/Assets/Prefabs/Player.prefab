@@ -109,7 +109,19 @@ MonoBehaviour:
     m_ActionId: 6c2ab1b8-8984-453a-af3d-a3c78ae1679a
     m_ActionName: Player/Shoot
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8325976683638316747}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: Teleport
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 852140f2-7766-474d-8707-702459ba45f3
     m_ActionName: Player/Teleport
   - m_PersistentCalls:
@@ -219,8 +231,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aim: {x: 0, y: 0}
   headAttached: 1
-  head: {fileID: 0}
-  body: {fileID: 0}
+  head: {fileID: 8452259550989493}
+  body: {fileID: 5708346269713211563}
 --- !u!1 &5917621035697141203
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,6 +503,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4154253710545152778, guid: 1b23292c865d5ab4f964b4145fada4a7, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 192
+      objectReference: {fileID: 0}
     - target: {fileID: 5857644237302178198, guid: 1b23292c865d5ab4f964b4145fada4a7, type: 3}
       propertyPath: m_Interpolate
       value: 1
@@ -544,11 +560,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1251208220523788415, guid: 07f6d9ca2246d7144b5a88dbf7a75442, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6504961404299766318, guid: 07f6d9ca2246d7144b5a88dbf7a75442, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316667247908739332, guid: 07f6d9ca2246d7144b5a88dbf7a75442, type: 3}
+      propertyPath: attachFreq
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316667247908739332, guid: 07f6d9ca2246d7144b5a88dbf7a75442, type: 3}
+      propertyPath: nodeWeight
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7316667247908739332, guid: 07f6d9ca2246d7144b5a88dbf7a75442, type: 3}
       propertyPath: radiusChangeSpeed
@@ -556,7 +580,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7725730877089922923, guid: 07f6d9ca2246d7144b5a88dbf7a75442, type: 3}
       propertyPath: thowForceMult
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7725730877089922923, guid: 07f6d9ca2246d7144b5a88dbf7a75442, type: 3}
       propertyPath: radiusChangeSpeed
