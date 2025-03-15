@@ -281,9 +281,4 @@ public class SoftBody : MonoBehaviour
         //find new position
         //apply differences to the new postion
     }
-
-    public void AttachSlime()
-    {
-        
-    }
 }
