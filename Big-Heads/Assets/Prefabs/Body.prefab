@@ -49,7 +49,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 5857644237302178198}
   moveSpeed: 5
+  jumpForce: 100
+  rayDist: 0.5
+  OffsetX: 0
+  OffsetY: 0
+  gravity: 9.81
+  isGrounded: 0
+  canJump: 0
+  hitLeft: 0
+  hitRight: 0
   actionAsset: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  theLayer: 3
 --- !u!50 &5857644237302178198
 Rigidbody2D:
   serializedVersion: 5
@@ -93,7 +103,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 192
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

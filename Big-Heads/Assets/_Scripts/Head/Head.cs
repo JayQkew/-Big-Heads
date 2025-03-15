@@ -40,7 +40,7 @@ public class Head : MonoBehaviour, IDamageable
 
     public void Throw(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed && _player.headAttached)
+        if (ctx.performed && _player.headAttached && _player.aim != Vector2.zero)
         {
             softBody.AddForce(_player.aim * thowForceMult, ForceMode2D.Impulse);
             _player.headAttached = false;
