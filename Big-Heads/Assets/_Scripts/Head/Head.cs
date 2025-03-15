@@ -5,7 +5,6 @@ using Random = Unity.Mathematics.Random;
 
 public class Head : MonoBehaviour, IDamageable
 {
-    public bool headAttached = true;
     [Header("Health")]
     public int health;
     [SerializeField] private int maxHealth;
@@ -41,10 +40,10 @@ public class Head : MonoBehaviour, IDamageable
 
     public void Throw(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed && headAttached)
+        if (ctx.performed && _player.headAttached)
         {
             softBody.AddForce(_player.aim * thowForceMult, ForceMode2D.Impulse);
-            headAttached = false;
+            _player.headAttached = false;
         }
     }
     
