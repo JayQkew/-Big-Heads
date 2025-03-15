@@ -87,7 +87,19 @@ MonoBehaviour:
     m_ActionId: 852140f2-7766-474d-8707-702459ba45f3
     m_ActionName: Player/Teleport
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8224093983786828759}
+        m_TargetAssemblyTypeName: BodyMovement, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: f1ba0d36-48eb-4cd5-b651-1c94a6531f70
     m_ActionName: Player/Jump
   - m_PersistentCalls:
@@ -143,6 +155,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 842251125013463897}
     m_Modifications:
+    - target: {fileID: 250793439605760412, guid: 1b23292c865d5ab4f964b4145fada4a7, type: 3}
+      propertyPath: OffsetX
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 250793439605760412, guid: 1b23292c865d5ab4f964b4145fada4a7, type: 3}
+      propertyPath: OffsetY
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 250793439605760412, guid: 1b23292c865d5ab4f964b4145fada4a7, type: 3}
+      propertyPath: gravity
+      value: 9.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 250793439605760412, guid: 1b23292c865d5ab4f964b4145fada4a7, type: 3}
+      propertyPath: jumpForce
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 250793439605760412, guid: 1b23292c865d5ab4f964b4145fada4a7, type: 3}
       propertyPath: moveSpeed
       value: 5
