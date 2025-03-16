@@ -116,6 +116,17 @@
                 },
                 {
                     "name": "",
+                    "id": "5bcd24b7-b3f9-45db-b8f3-b37882de29c8",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "b3f66d0b-7751-423f-908b-a11c5bd95930",
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "",
@@ -140,17 +151,6 @@
                     "name": "",
                     "id": "7f6fb2ff-7214-4663-a3f1-144b4a897f15",
                     "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Throw",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5bdb97d5-ad4a-43b6-8e7a-e6dde2925929",
-                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
