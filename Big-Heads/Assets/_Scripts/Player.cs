@@ -11,12 +11,10 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform head;
     [SerializeField] private Transform body;
 
-    public GameObject healthDisplay;
 
     private void Update()
     {
         AttachedHead();
-        healthDisplay.transform.position = head.position;
     }
 
     public void Aim(InputAction.CallbackContext ctx) => aim = ctx.ReadValue<Vector2>().normalized;
