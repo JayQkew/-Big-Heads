@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Teleport",
+                    "name": "Teleport/Throw",
                     "type": "Button",
                     "id": "9a99fcb7-ca45-4c11-bf42-ed73d80c797a",
                     "expectedControlType": "",
@@ -36,15 +36,6 @@
                     "name": "Shoot",
                     "type": "Button",
                     "id": "67a11cef-05f7-4899-b330-1c26ff086857",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Throw",
-                    "type": "Button",
-                    "id": "104cd669-e1a1-418d-a60c-66f4346a25d7",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -121,11 +112,11 @@
                 {
                     "name": "",
                     "id": "e9fedbe1-4e67-41cd-b1ba-673a5667c899",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Teleport",
+                    "action": "Teleport/Throw",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -137,17 +128,6 @@
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ee6f70d0-b808-48e0-a6b1-2e42e544e8f0",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "Throw",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

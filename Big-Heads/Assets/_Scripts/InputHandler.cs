@@ -2,26 +2,26 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class InputHandler : MonoBehaviour
 {
     public Vector2 move;
     public Vector2 aim;
     [SerializeField] private bool shooting;
-    [SerializeField] private bool throwing;
     [SerializeField] private bool jumping;
-    [SerializeField] private bool teleporting;
+    [SerializeField] private bool teleportThrowing;
     
     [Header("Events")]
     public UnityEvent onJump;
     [Space(25)] 
-    public UnityEvent onTeleport;
+    public UnityEvent onTeleportThrow;
+    [Space(25)]
+    public UnityEvent onThrow;
     [Space(25)]
     public UnityEvent onShoot;
     public UnityEvent onShootStart;
     public UnityEvent onShootEnd;
-    [Space(25)]
-    public UnityEvent onThrow;
 
     private void Update()
     {
@@ -46,29 +46,16 @@ public class InputHandler : MonoBehaviour
         }
     }
 
-    public void Teleport(InputAction.CallbackContext ctx)
+    public void TeleportThrow(InputAction.CallbackContext ctx)
     {
         if (ctx.performed)
         {
-            onTeleport?.Invoke();
-            teleporting = true;
+            onTeleportThrow?.Invoke();
+            teleportThrowing = true;
         }
         else if (ctx.canceled)
         {
-            teleporting = false;
-        }
-    }
-
-    public void Throw(InputAction.CallbackContext ctx)
-    {
-        if (ctx.performed)
-        {
-            onThrow?.Invoke();
-            throwing = true;
-        }
-        else
-        {
-            throwing = false;
+            teleportThrowing = false;
         }
     }
 

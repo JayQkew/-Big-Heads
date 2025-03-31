@@ -6,17 +6,14 @@ using UnityEngine;
 public class PlayerActions : MonoBehaviour
 {
     private InputHandler inputHandler;
-    
+
     public bool headAttached = true;
-    [Space(10)]
-    [SerializeField] private Transform head;
+    [Space(10)] [SerializeField] private Transform head;
     [SerializeField] private Transform body;
     private new_Head _head;
-    [Header("Throw")]
-    [SerializeField] private float throwMult;
+    [Header("Throw")] [SerializeField] private float throwMult;
 
-    [Header("Shooting")] 
-    [SerializeField] private GameObject gun;
+    [Header("Shooting")] [SerializeField] private GameObject gun;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private float shootMult;
@@ -32,28 +29,28 @@ public class PlayerActions : MonoBehaviour
         GunDirection();
     }
 
-    public void Teleport()
+    public void TeleportThrow()
     {
-        if (!headAttached)
-        {
-            body.position = head.position;
-            head.position = body.position + Vector3.up;
-            
-            _head.AttachHead(true);
-            headAttached = true;
-        }
+        if (headAttached) Throw();
+        else Teleport();
     }
 
-    public void Throw()
+    private void Teleport()
     {
-        if (headAttached)
-        {
-            Vector2 force = inputHandler.aim * throwMult;
-            _head.rb.AddForce(force, ForceMode2D.Impulse);
-            
-            _head.AttachHead(false);
-            headAttached = false;
-        }
+        body.position = head.position;
+        head.position = body.position + Vector3.up;
+
+        _head.AttachHead(true);
+        headAttached = true;
+    }
+
+    private void Throw()
+    {
+        Vector2 force = inputHandler.aim * throwMult;
+        _head.rb.AddForce(force, ForceMode2D.Impulse);
+
+        _head.AttachHead(false);
+        headAttached = false;
     }
 
     public void Shoot()
