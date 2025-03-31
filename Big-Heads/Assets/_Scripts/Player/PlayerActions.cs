@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerActions : MonoBehaviour
@@ -9,15 +10,26 @@ public class PlayerActions : MonoBehaviour
     public bool headAttached = true;
     [Space(10)]
     [SerializeField] private Transform head;
-    [SerializeField] private new_Head headScript;
     [SerializeField] private Transform body;
+    private new_Head _head;
     [Header("Throw")]
     [SerializeField] private float throwMult;
+
+    [Header("Shooting")] 
+    [SerializeField] private GameObject gun;
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform spawnPoint;
+    [SerializeField] private float shootMult;
 
     private void Awake()
     {
         inputHandler = GetComponent<InputHandler>();
-        headScript = head.GetComponent<new_Head>();
+        _head = head.GetComponent<new_Head>();
+    }
+
+    private void Update()
+    {
+        GunDirection();
     }
 
     public void Teleport()
@@ -27,7 +39,7 @@ public class PlayerActions : MonoBehaviour
             body.position = head.position;
             head.position = body.position + Vector3.up;
             
-            headScript.AttachHead(true);
+            _head.AttachHead(true);
             headAttached = true;
         }
     }
@@ -37,10 +49,23 @@ public class PlayerActions : MonoBehaviour
         if (headAttached)
         {
             Vector2 force = inputHandler.aim * throwMult;
-            head.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
+            _head.rb.AddForce(force, ForceMode2D.Impulse);
             
-            headScript.AttachHead(false);
+            _head.AttachHead(false);
             headAttached = false;
         }
+    }
+
+    public void Shoot()
+    {
+        GameObject bullet = Instantiate(bulletPrefab, spawnPoint.position, Quaternion.identity);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        rb.AddForce(inputHandler.aim * shootMult, ForceMode2D.Impulse);
+    }
+
+    private void GunDirection()
+    {
+        float deg = Mathf.Atan2(inputHandler.aim.y, inputHandler.aim.x) * Mathf.Rad2Deg;
+        gun.transform.rotation = Quaternion.Euler(0, 0, deg - 90);
     }
 }

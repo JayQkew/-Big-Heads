@@ -25,7 +25,7 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        _rb.linearVelocity = new Vector2(_inputHandler.move.x * speedMult * Time.deltaTime, _rb.linearVelocityY);
+        _rb.linearVelocity = new Vector2(_inputHandler.move.x * speedMult, _rb.linearVelocityY);
         
         GroundedCheck();
     }
@@ -41,8 +41,7 @@ public class Movement : MonoBehaviour
         bool hitLeft = Physics2D.Raycast(botLeft, Vector2.down, rayDistance, layerMask);
         bool hitRight = Physics2D.Raycast(botRight, Vector2.down, rayDistance, layerMask);
 
-        if (hitLeft || hitRight) isGrounded = true;
-        else if (!hitLeft && !hitRight) isGrounded = false;
+        isGrounded = hitLeft || hitRight;
     }
 
     public void Jump()
