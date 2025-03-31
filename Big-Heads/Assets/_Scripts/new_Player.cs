@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class new_Player : MonoBehaviour
@@ -6,4 +7,6 @@ public class new_Player : MonoBehaviour
     
     [SerializeField] private Transform head;
     [SerializeField] private Transform body;
+    
+    public List<ICard> deck = new List<ICard>();
 }
