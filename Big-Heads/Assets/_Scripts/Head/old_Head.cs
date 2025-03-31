@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 using Random = Unity.Mathematics.Random;
 using UnityEngine.SceneManagement;
 
-public class Head : MonoBehaviour, IDamageable
+public class old_Head : MonoBehaviour, IDamageable
 {
     [Header("Health")]
     public int health;

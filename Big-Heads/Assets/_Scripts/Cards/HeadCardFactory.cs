@@ -11,7 +11,7 @@ public class HeadCardFactory : CardFactory
         switch (headCard)
         {
             case HeadCardType.BigHead:
-                return new BigGun();
+                return new BigHead();
             case HeadCardType.SmallHead:
                 return new SmallHead();
         }

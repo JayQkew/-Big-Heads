@@ -291,7 +291,7 @@ public class SoftBody : MonoBehaviour, IDamageable
 
     public void Damage(int dmg)
     {
-        transform.GetComponentInParent<Head>().Damage(dmg);
+        transform.GetComponentInParent<old_Head>().Damage(dmg);
             
     }
 }
