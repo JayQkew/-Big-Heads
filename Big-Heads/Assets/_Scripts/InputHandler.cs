@@ -31,11 +31,11 @@ public class InputHandler : MonoBehaviour
         if(shooting) onShoot?.Invoke();
     }
 
-    private void Aim() 
+    private void Aim()
     {
-        aim = isLeftStickAim ? 
-            Gamepad.current.leftStick.ReadValue() : 
-            Gamepad.current.rightStick.ReadValue();
+        aim = Gamepad.current.rightStick.ReadValue() != Vector2.zero ?
+            Gamepad.current.rightStick.ReadValue() :
+            Gamepad.current.leftStick.ReadValue();
     }
     
     public void Move(InputAction.CallbackContext ctx) => move = ctx.ReadValue<Vector2>();
