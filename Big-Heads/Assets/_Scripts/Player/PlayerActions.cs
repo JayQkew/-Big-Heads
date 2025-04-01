@@ -94,8 +94,12 @@ public class PlayerActions : MonoBehaviour
         if (currAmmo > 0 && currFireRate >= fireRate)
         {
             GameObject bullet = Instantiate(bulletPrefab, spawnPoint.position, Quaternion.identity);
-            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            rb.AddForce(_inputHandler.aim * shootForce * _statModifiers.FireForceMult, ForceMode2D.Impulse);
+            bullet.GetComponent<Bullet>().SetModifiers(_statModifiers.ExtraBounces,
+                _statModifiers.BulletSizeMult,
+                _statModifiers.BulletBounceMult,
+                _statModifiers.BulletMassMult,
+                _statModifiers.BulletGravityMult);
+            bullet.GetComponent<Bullet>().rb.AddForce(_inputHandler.aim * shootForce * _statModifiers.FireForceMult, ForceMode2D.Impulse);
             
             currAmmo--;
             currFireRate = 0;

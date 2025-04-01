@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3103416712996937802}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.00074969}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -47,6 +47,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aea2593f2303b24e83bb7f63be0c234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  damage: 1
+  maxBounces: 0
+  bulletSize: 1
+  bounciness: 0.5
+  mass: 1
+  gravity: 1
 --- !u!50 &3453665874145961679
 Rigidbody2D:
   serializedVersion: 5

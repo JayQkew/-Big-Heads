@@ -23,6 +23,9 @@ public class StatModifiers : MonoBehaviour
     [Header("Bullet Multipliers")]
     [SerializeField] private int extraBounces;
     [SerializeField] private float bulletSizeMult;
+    [SerializeField] private float bulletBounceMult;
+    [SerializeField] private float bulletMassMult;
+    [SerializeField] private float bulletGravityMult;
     
     //Getters & Setters
     public float SpeedMult
@@ -201,5 +204,41 @@ public class StatModifiers : MonoBehaviour
             }
             bulletSizeMult = value;
         }
+    }
+
+    public float BulletBounceMult
+    {
+        get => bulletBounceMult;
+        set
+        {
+            if (value < 0)
+            {
+                Debug.Log("BulletBounceMult cannot be < 0");
+                bulletBounceMult = 0;
+                return;
+            }
+            bulletBounceMult = value;
+        }
+    }
+
+    public float BulletMassMult
+    {
+        get => bulletMassMult;
+        set
+        {
+            if (value < 0.01f)
+            {
+                Debug.Log("BulletMassMult cannot be < 0.01");
+                bulletMassMult = 0.01f;
+                return;
+            }
+            bulletMassMult = value;
+        }
+    }
+
+    public float BulletGravityMult
+    {
+        get => bulletGravityMult;
+        set => bulletGravityMult = value;
     }
 }
