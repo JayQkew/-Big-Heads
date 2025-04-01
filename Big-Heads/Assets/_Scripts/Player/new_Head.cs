@@ -18,8 +18,9 @@ public class new_Head : MonoBehaviour
     [Header("Bounce")]
     [SerializeField] private PhysicsMaterial2D bounceMat;
     [SerializeField] private float bounce;
-    
-    [Header("Physics")]
+
+    [Header("Physics")] 
+    [SerializeField] private float headSize;
     [SerializeField] private float headMass;
     [SerializeField] private float headGravity;
 
@@ -44,6 +45,9 @@ public class new_Head : MonoBehaviour
         
         rb.mass = headMass * _statModifiers.HeadMassMult;
         rb.gravityScale = headGravity * _statModifiers.HeadGravityMult;
+        
+        _col.radius = headSize * _statModifiers.HeadSizeMult/2;
+        transform.GetChild(0).localScale = Vector3.one * headSize * _statModifiers.HeadSizeMult;
     }
 
     public void AttachHead(bool isAttached)
