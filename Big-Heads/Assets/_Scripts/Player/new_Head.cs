@@ -1,21 +1,49 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Rigidbody2D),
     typeof(CircleCollider2D),
     typeof(SpringJoint2D))]
+[SelectionBase]
 public class new_Head : MonoBehaviour
 {
+    private StatModifiers _statModifiers;
+    
     public Rigidbody2D rb;
     private CircleCollider2D _col;
     private SpringJoint2D _joint;
+    
+    [Header("Bounce")]
+    [SerializeField] private PhysicsMaterial2D bounceMat;
+    [SerializeField] private float bounce;
+    
+    [Header("Physics")]
+    [SerializeField] private float headMass;
+    [SerializeField] private float headGravity;
 
     private void Awake()
     {
+        _statModifiers = GetComponentInParent<StatModifiers>();
+        
         rb = GetComponent<Rigidbody2D>();
         _col = GetComponent<CircleCollider2D>();
         _joint = GetComponent<SpringJoint2D>();
+        
+        bounceMat = new PhysicsMaterial2D
+        {
+            name = "bounceMatPersonal"
+        };
+    }
+
+    private void Start()
+    {
+        bounceMat.bounciness = bounce * _statModifiers.HeadBounceMult;
+        _col.sharedMaterial = bounceMat;
+        
+        rb.mass = headMass * _statModifiers.HeadMassMult;
+        rb.gravityScale = headGravity * _statModifiers.HeadGravityMult;
     }
 
     public void AttachHead(bool isAttached)

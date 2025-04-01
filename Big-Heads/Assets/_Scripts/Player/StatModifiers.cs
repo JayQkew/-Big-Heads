@@ -11,7 +11,8 @@ public class StatModifiers : MonoBehaviour
     [SerializeField] private float throwForceMult;
     [SerializeField] private float headBounceMult;
     [SerializeField] private float headSizeMult;
-    [SerializeField] private float headWeightMult;
+    [SerializeField] private float headMassMult;
+    [SerializeField] private float headGravityMult;
 
     [Header("Gun Multipliers")] 
     [SerializeField] private bool autoFire;
@@ -106,11 +107,26 @@ public class StatModifiers : MonoBehaviour
         }
     }
 
-    //can be negative, so the head floats up
-    public float HeadWeightMult
+    public float HeadMassMult
     {
-        get => headWeightMult;
-        set => headWeightMult = value;
+        get => headMassMult;
+        set
+        {
+            if (value < 0.01f)
+            {
+                Debug.Log("HeadMassMult cannot be < 0");
+                headMassMult = 0.01f;
+                return;
+            }
+            headMassMult = value;
+        }
+    }
+
+    //can be negative, so the head floats up
+    public float HeadGravityMult
+    {
+        get => headGravityMult;
+        set => headGravityMult = value;
     }
 
     public bool AutoFire

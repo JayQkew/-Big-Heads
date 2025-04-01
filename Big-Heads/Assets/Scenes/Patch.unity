@@ -868,11 +868,11 @@ MonoBehaviour:
   headAttached: 1
   head: {fileID: 8452260173896303}
   body: {fileID: 5708346269090346609}
-  throwMult: 10
+  throwForce: 10
   gun: {fileID: 7630372577681364776}
   bulletPrefab: {fileID: 3103416712996937802, guid: ed6bfc7c6ce5934449a824317d79575e, type: 3}
   spawnPoint: {fileID: 3038137812690754600}
-  shootMult: 35
+  shootForce: 35
 --- !u!114 &2044648790898749880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -887,9 +887,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedMult: 1
   jumpMult: 1
+  teleportReloadMult: 1
   throwForceMult: 1
   headBounceMult: 1
   headSizeMult: 1
+  headWeightMult: 1
+  autoFire: 0
   extraAmmo: 0
   fireRateMult: 1
   fireForceMult: 1

@@ -13,12 +13,18 @@ public class PlayerActions : MonoBehaviour
     [Space(10)] [SerializeField] private Transform head;
     [SerializeField] private Transform body;
     private new_Head _head;
-    [FormerlySerializedAs("throwMult")] [Header("Throw")] [SerializeField] private float throwForce;
+    [Header("Throw")] 
+    [SerializeField] private float throwForce;
 
-    [Header("Shooting")] [SerializeField] private GameObject gun;
+    [Header("Teleport")] 
+    [SerializeField] private float teleportTime;
+    [SerializeField] private float currTeleportTime;
+
+    [Header("Shooting")] 
+    [SerializeField] private GameObject gun;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform spawnPoint;
-    [FormerlySerializedAs("shootMult")] [SerializeField] private float shootForce;
+    [SerializeField] private float shootForce;
 
     private void Awake()
     {
@@ -30,6 +36,8 @@ public class PlayerActions : MonoBehaviour
     private void Update()
     {
         GunDirection();
+        currTeleportTime += Time.deltaTime;
+
     }
 
     public void TeleportThrow()
@@ -40,11 +48,15 @@ public class PlayerActions : MonoBehaviour
 
     private void Teleport()
     {
-        body.position = head.position;
-        head.position = body.position + Vector3.up;
+        if (currTeleportTime * _statModifiers.TeleportReloadMult >= teleportTime)
+        {
+            body.position = head.position;
+            head.position = body.position + Vector3.up;
 
-        _head.AttachHead(true);
-        headAttached = true;
+            _head.AttachHead(true);
+            headAttached = true;
+            currTeleportTime = 0;
+        }
     }
 
     private void Throw()

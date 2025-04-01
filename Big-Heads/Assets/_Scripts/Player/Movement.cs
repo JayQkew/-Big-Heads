@@ -1,15 +1,17 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Movement : MonoBehaviour
 {
     [SerializeField] private Transform body; 
     private Rigidbody2D _rb;
     private InputHandler _inputHandler;
+    private StatModifiers _statModifiers;
     
     [Header("Movement")]
-    [SerializeField] private float speedMult;
-    [SerializeField] private float jumpMult;
+    [SerializeField] private float speedBase;
+    [SerializeField] private float jumpForce;
 
     [Header("Ground Check")] 
     [SerializeField] private bool isGrounded;
@@ -20,12 +22,13 @@ public class Movement : MonoBehaviour
     private void Awake()
     {
         _inputHandler = GetComponent<InputHandler>();
+        _statModifiers = GetComponent<StatModifiers>();
         _rb = body.GetComponent<Rigidbody2D>();
     }
 
     private void Update()
     {
-        _rb.linearVelocity = new Vector2(_inputHandler.move.x * speedMult, _rb.linearVelocityY);
+        _rb.linearVelocity = new Vector2(_inputHandler.move.x * speedBase * _statModifiers.SpeedMult, _rb.linearVelocityY);
         
         GroundedCheck();
     }
@@ -46,7 +49,7 @@ public class Movement : MonoBehaviour
 
     public void Jump()
     {
-        if (isGrounded) _rb.AddForce(Vector2.up * jumpMult, ForceMode2D.Impulse);
+        if (isGrounded) _rb.AddForce(Vector2.up * jumpForce * _statModifiers.JumpMult, ForceMode2D.Impulse);
     }
     
 }
