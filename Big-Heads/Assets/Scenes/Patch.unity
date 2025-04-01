@@ -845,8 +845,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 5708346269090346609}
-  speedBase: 0
-  jumpForce: 0
+  speedBase: 5
+  jumpForce: 5
   isGrounded: 0
   layerMask:
     serializedVersion: 2
@@ -869,12 +869,18 @@ MonoBehaviour:
   head: {fileID: 8452260173896303}
   body: {fileID: 5708346269090346609}
   throwForce: 10
-  teleportTime: 0
+  teleportTime: 5
   currTeleportTime: 0
   gun: {fileID: 7630372577681364776}
   bulletPrefab: {fileID: 3103416712996937802, guid: ed6bfc7c6ce5934449a824317d79575e, type: 3}
   spawnPoint: {fileID: 3038137812690754600}
   shootForce: 35
+  maxAmmo: 7
+  currAmmo: 0
+  fireRate: 1.5
+  currFireRate: 0
+  bulletBounces: 0
+  bulletSize: 0
 --- !u!114 &2044648790898749880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -895,7 +901,7 @@ MonoBehaviour:
   headSizeMult: 1
   headMassMult: 1
   headGravityMult: 1
-  autoFire: 0
+  autoFire: 1
   extraAmmo: 0
   fireRateMult: 1
   fireForceMult: 1

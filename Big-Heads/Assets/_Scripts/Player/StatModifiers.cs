@@ -16,7 +16,7 @@ public class StatModifiers : MonoBehaviour
 
     [Header("Gun Multipliers")] 
     [SerializeField] private bool autoFire;
-    [SerializeField] private float extraAmmo;
+    [SerializeField] private int extraAmmo;
     [SerializeField] private float fireRateMult;
     [SerializeField] private float fireForceMult;
 
@@ -136,7 +136,7 @@ public class StatModifiers : MonoBehaviour
     }
 
     //can be negative, but cannot be less than 1
-    public float ExtraAmmo
+    public int ExtraAmmo
     {
         get => extraAmmo;
         set

@@ -13,18 +13,21 @@ public class PlayerActions : MonoBehaviour
     [Space(10)] [SerializeField] private Transform head;
     [SerializeField] private Transform body;
     private new_Head _head;
-    [Header("Throw")] 
-    [SerializeField] private float throwForce;
+    [Header("Throw")] [SerializeField] private float throwForce;
 
-    [Header("Teleport")] 
-    [SerializeField] private float teleportTime;
+    [Header("Teleport")] [SerializeField] private float teleportTime;
     [SerializeField] private float currTeleportTime;
 
-    [Header("Shooting")] 
-    [SerializeField] private GameObject gun;
+    [Header("Shooting")] [SerializeField] private GameObject gun;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private float shootForce;
+    [Space(10)] [SerializeField] private int maxAmmo;
+    [SerializeField] private int currAmmo;
+    [Space(10)] [SerializeField] private float fireRate;
+    [SerializeField] private float currFireRate;
+    [Space(10)] [SerializeField] private int bulletBounces;
+    [SerializeField] private int bulletSize;
 
     private void Awake()
     {
@@ -33,11 +36,27 @@ public class PlayerActions : MonoBehaviour
         _head = head.GetComponent<new_Head>();
     }
 
+    private void Start()
+    {
+        currAmmo = maxAmmo + _statModifiers.ExtraAmmo;
+
+        if (_statModifiers.AutoFire)
+        {
+            _inputHandler.onShoot.AddListener(Shoot);
+            _inputHandler.onShootStart.RemoveListener(Shoot);
+        }
+        else
+        {
+            _inputHandler.onShootStart.AddListener(Shoot);
+            _inputHandler.onShoot.RemoveListener(Shoot);
+        }
+    }
+
     private void Update()
     {
         GunDirection();
         currTeleportTime += Time.deltaTime;
-
+        currFireRate += Time.deltaTime;
     }
 
     public void TeleportThrow()
@@ -56,6 +75,7 @@ public class PlayerActions : MonoBehaviour
             _head.AttachHead(true);
             headAttached = true;
             currTeleportTime = 0;
+            currAmmo = maxAmmo + _statModifiers.ExtraAmmo;
         }
     }
 
@@ -71,9 +91,15 @@ public class PlayerActions : MonoBehaviour
 
     public void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, spawnPoint.position, Quaternion.identity);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(_inputHandler.aim * shootForce * _statModifiers.FireForceMult, ForceMode2D.Impulse);
+        if (currAmmo > 0 && currFireRate >= fireRate)
+        {
+            GameObject bullet = Instantiate(bulletPrefab, spawnPoint.position, Quaternion.identity);
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            rb.AddForce(_inputHandler.aim * shootForce * _statModifiers.FireForceMult, ForceMode2D.Impulse);
+            
+            currAmmo--;
+            currFireRate = 0;
+        }
     }
 
     private void GunDirection()
