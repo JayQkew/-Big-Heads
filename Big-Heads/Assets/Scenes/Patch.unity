@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf586812865abcd49a9e56f26e0efbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLeftStickAim: 0
   move: {x: 0, y: 0}
   aim: {x: 0, y: 0}
   shooting: 0
@@ -866,11 +867,11 @@ MonoBehaviour:
   headAttached: 1
   head: {fileID: 8452260173896303}
   body: {fileID: 5708346269090346609}
-  throwMult: 5
+  throwMult: 10
   gun: {fileID: 7630372577681364776}
   bulletPrefab: {fileID: 3103416712996937802, guid: ed6bfc7c6ce5934449a824317d79575e, type: 3}
   spawnPoint: {fileID: 3038137812690754600}
-  shootMult: 10
+  shootMult: 35
 --- !u!4 &2219046003832849042
 Transform:
   m_ObjectHideFlags: 0
@@ -1201,7 +1202,7 @@ CircleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 04356833876e4fc48a3e051dbad18c61, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

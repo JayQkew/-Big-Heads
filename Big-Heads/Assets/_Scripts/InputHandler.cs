@@ -6,6 +6,8 @@ using UnityEngine.Serialization;
 
 public class InputHandler : MonoBehaviour
 {
+    public bool isLeftStickAim = true;
+    [Space(10)]
     public Vector2 move;
     public Vector2 aim;
     [SerializeField] private bool shooting;
@@ -29,7 +31,12 @@ public class InputHandler : MonoBehaviour
         if(shooting) onShoot?.Invoke();
     }
 
-    private void Aim() => aim = Gamepad.current.leftStick.ReadValue();
+    private void Aim() 
+    {
+        aim = isLeftStickAim ? 
+            Gamepad.current.leftStick.ReadValue() : 
+            Gamepad.current.rightStick.ReadValue();
+    }
     
     public void Move(InputAction.CallbackContext ctx) => move = ctx.ReadValue<Vector2>();
 

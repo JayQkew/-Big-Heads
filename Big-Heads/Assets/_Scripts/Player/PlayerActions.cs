@@ -47,6 +47,7 @@ public class PlayerActions : MonoBehaviour
     private void Throw()
     {
         Vector2 force = inputHandler.aim * throwMult;
+        _head.rb.linearVelocity = Vector2.zero;
         _head.rb.AddForce(force, ForceMode2D.Impulse);
 
         _head.AttachHead(false);
