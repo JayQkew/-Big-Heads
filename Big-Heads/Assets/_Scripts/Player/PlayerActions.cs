@@ -2,25 +2,28 @@ using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerActions : MonoBehaviour
 {
-    private InputHandler inputHandler;
+    private InputHandler _inputHandler;
+    private StatModifiers _statModifiers;
 
     public bool headAttached = true;
     [Space(10)] [SerializeField] private Transform head;
     [SerializeField] private Transform body;
     private new_Head _head;
-    [Header("Throw")] [SerializeField] private float throwMult;
+    [FormerlySerializedAs("throwMult")] [Header("Throw")] [SerializeField] private float throwForce;
 
     [Header("Shooting")] [SerializeField] private GameObject gun;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform spawnPoint;
-    [SerializeField] private float shootMult;
+    [FormerlySerializedAs("shootMult")] [SerializeField] private float shootForce;
 
     private void Awake()
     {
-        inputHandler = GetComponent<InputHandler>();
+        _inputHandler = GetComponent<InputHandler>();
+        _statModifiers = GetComponent<StatModifiers>();
         _head = head.GetComponent<new_Head>();
     }
 
@@ -46,7 +49,7 @@ public class PlayerActions : MonoBehaviour
 
     private void Throw()
     {
-        Vector2 force = inputHandler.aim * throwMult;
+        Vector2 force = _inputHandler.aim * throwForce * _statModifiers.ThrowForceMult;
         _head.rb.linearVelocity = Vector2.zero;
         _head.rb.AddForce(force, ForceMode2D.Impulse);
 
@@ -58,12 +61,12 @@ public class PlayerActions : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, spawnPoint.position, Quaternion.identity);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(inputHandler.aim * shootMult, ForceMode2D.Impulse);
+        rb.AddForce(_inputHandler.aim * shootForce * _statModifiers.FireForceMult, ForceMode2D.Impulse);
     }
 
     private void GunDirection()
     {
-        float deg = Mathf.Atan2(inputHandler.aim.y, inputHandler.aim.x) * Mathf.Rad2Deg;
+        float deg = Mathf.Atan2(_inputHandler.aim.y, _inputHandler.aim.x) * Mathf.Rad2Deg;
         gun.transform.rotation = Quaternion.Euler(0, 0, deg - 90);
     }
 }

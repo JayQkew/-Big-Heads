@@ -7,11 +7,14 @@ public class StatModifiers : MonoBehaviour
     [SerializeField] private float jumpMult;
 
     [Header("Head Multipliers")] 
+    [SerializeField] private float teleportReloadMult;
     [SerializeField] private float throwForceMult;
     [SerializeField] private float headBounceMult;
     [SerializeField] private float headSizeMult;
+    [SerializeField] private float headWeightMult;
 
     [Header("Gun Multipliers")] 
+    [SerializeField] private bool autoFire;
     [SerializeField] private float extraAmmo;
     [SerializeField] private float fireRateMult;
     [SerializeField] private float fireForceMult;
@@ -51,6 +54,21 @@ public class StatModifiers : MonoBehaviour
         }
     }
 
+    public float TeleportReloadMult
+    {
+        get => teleportReloadMult;
+        set
+        {
+            if (value < 0)
+            {
+                Debug.Log("TeleportReloadMult cannot be < 0");
+                teleportReloadMult = 0;
+                return;
+            }
+            teleportReloadMult = value;
+        }
+    }
+
     //can go negative, player will just have to aim opposite
     public float ThrowForceMult
     {
@@ -86,6 +104,19 @@ public class StatModifiers : MonoBehaviour
             }
             headSizeMult = value;
         }
+    }
+
+    //can be negative, so the head floats up
+    public float HeadWeightMult
+    {
+        get => headWeightMult;
+        set => headWeightMult = value;
+    }
+
+    public bool AutoFire
+    {
+        get => autoFire;
+        set => autoFire = value;
     }
 
     //can be negative, but cannot be less than 1
