@@ -5,13 +5,15 @@ using UnityEngine.Serialization;
 public class Movement : MonoBehaviour
 {
     [SerializeField] private Transform body; 
-    private Rigidbody2D _rb;
+    public Rigidbody2D _rb;
     private InputHandler _inputHandler;
     private StatModifiers _statModifiers;
     
     [Header("Movement")]
     [SerializeField] private float speedBase;
+    [SerializeField] private float acceleration;
     [SerializeField] private float jumpForce;
+    private Vector2 desiredVelocity;
 
     [Header("Ground Check")] 
     [SerializeField] private bool isGrounded;
@@ -28,9 +30,19 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        _rb.linearVelocity = new Vector2(_inputHandler.move.x * speedBase * _statModifiers.SpeedMult, _rb.linearVelocityY);
+        // _rb.linearVelocity = new Vector2(_inputHandler.move.x * speedBase * _statModifiers.SpeedMult, _rb.linearVelocityY);
+        desiredVelocity = _inputHandler.move.normalized * (speedBase * _statModifiers.SpeedMult);
         
         GroundedCheck();
+    }
+
+    private void FixedUpdate() {
+        Vector2 currentVelocity = _rb.linearVelocity;
+        Vector2 velocityChange = desiredVelocity - currentVelocity;
+
+        float xVelocity = Mathf.Lerp(currentVelocity.x, desiredVelocity.x, Time.fixedDeltaTime * acceleration);
+        Vector2 newVelocity = new Vector2(xVelocity, _rb.linearVelocityY);
+        _rb.linearVelocity = newVelocity;
     }
 
     private void GroundedCheck()
