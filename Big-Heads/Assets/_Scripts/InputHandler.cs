@@ -6,6 +6,7 @@ using UnityEngine.Serialization;
 
 public class InputHandler : MonoBehaviour
 {
+    public Gamepad gamepad;
     public bool isLeftStickAim = true;
     [Space(10)]
     public Vector2 move;
@@ -33,9 +34,9 @@ public class InputHandler : MonoBehaviour
 
     private void Aim()
     {
-        aim = Gamepad.current.rightStick.ReadValue() != Vector2.zero ?
-            Gamepad.current.rightStick.ReadValue() :
-            Gamepad.current.leftStick.ReadValue();
+        aim = gamepad.rightStick.ReadValue() != Vector2.zero ?
+            gamepad.rightStick.ReadValue() :
+            gamepad.leftStick.ReadValue();
     }
     
     public void Move(InputAction.CallbackContext ctx) => move = ctx.ReadValue<Vector2>();

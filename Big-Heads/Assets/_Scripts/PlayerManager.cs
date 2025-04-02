@@ -4,32 +4,21 @@ using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour
 {
-    public static PlayerManager instance { get; private set; }
-    public Material[] materials;
     private int playerCount;
-    
-    public String[] _layers;
+    [SerializeField] private Color[] playerColors;
     
     public Transform[] _spawnPoints;
-
-    public GameObject[] playerHealth;
-
-    private void Awake()
-    {
-        instance = this;
-    }
-
     public void OnPlayerJoined(PlayerInput playerInput)
     {
-        GameObject softbody = playerInput.transform.GetChild(0).GetChild(0).gameObject;
-
         playerInput.gameObject.name = "Player" + (playerCount + 1);
         playerInput.transform.SetParent(transform);
-        softbody.layer = LayerMask.NameToLayer(_layers[playerCount]);
-        softbody.transform.position = Vector3.zero;
-        softbody.GetComponent<SoftBody>().meshMaterial = materials[playerCount];
-        
+
         playerInput.transform.position = _spawnPoints[playerCount].position;
+        foreach (SpriteRenderer sr in playerInput.GetComponentsInChildren<SpriteRenderer>()) {
+            sr.color = playerColors[playerCount];
+        }
+
+        playerInput.GetComponent<InputHandler>().gamepad = playerInput.GetDevice<Gamepad>();
         
         Debug.Log("Joined");
         playerCount++;
