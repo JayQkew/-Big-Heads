@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
     typeof(CircleCollider2D),
     typeof(SpringJoint2D))]
 [SelectionBase]
-public class new_Head : MonoBehaviour
+public class Head : MonoBehaviour
 {
     private StatModifiers _statModifiers;
     

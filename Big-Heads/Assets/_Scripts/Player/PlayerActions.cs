@@ -12,7 +12,7 @@ public class PlayerActions : MonoBehaviour
     public bool headAttached = true;
     [Space(10)] [SerializeField] private Transform head;
     [SerializeField] private Transform body;
-    private new_Head _head;
+    private Head _head;
     [Header("Throw")] [SerializeField] private float throwForce;
 
     [Header("Teleport")] [SerializeField] private float teleportTime;
@@ -33,7 +33,7 @@ public class PlayerActions : MonoBehaviour
     {
         _inputHandler = GetComponent<InputHandler>();
         _statModifiers = GetComponent<StatModifiers>();
-        _head = head.GetComponent<new_Head>();
+        _head = head.GetComponent<Head>();
     }
 
     private void Start()
