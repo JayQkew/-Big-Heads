@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-public class SoftBody : MonoBehaviour, IDamageable
+public class SoftBody : MonoBehaviour
 {
     [Range(3, 40)] public int numberOfNodes = 10;
     public float oldRadius = 3;
