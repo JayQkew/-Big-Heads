@@ -925,8 +925,6 @@ MonoBehaviour:
   currAmmo: 0
   fireRate: 1.5
   currFireRate: 0
-  bulletBounces: 0
-  bulletSize: 0
 --- !u!114 &2044648790898749880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -939,8 +937,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 464b21bcd63840e4c9f7b72d337eebee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthMult: 0
-  damageMult: 0
+  healthMult: 1
+  damageMult: 1
   speedMult: 1
   jumpMult: 1
   teleportReloadMult: 1
@@ -972,7 +970,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   maxHealth: 10
-  baseDamage: 0
   onDeath:
     m_PersistentCalls:
       m_Calls: []
