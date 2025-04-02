@@ -9,8 +9,6 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private float health;
     [SerializeField] private float maxHealth;
     
-    [SerializeField] private float baseDamage;
-    
     public UnityEvent onDeath;
 
     private void Awake() {
@@ -34,5 +32,4 @@ public class PlayerStats : MonoBehaviour
             health = maxHealth * _statModifiers.HealthMult;
         }
     }
-    
 }

@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public Rigidbody2D rb;
     private CircleCollider2D _col;
-    public int damage = 1;
+    public float damage = 1;
     public int maxBounces;
     private int _currBounces = 0;
     public float bulletSize;
@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour
         _col.sharedMaterial = _physicsMaterial2D;
     }
 
-    public void SetModifiers(int bounceMod, float sizeMod, float bouncinessMod, float massMod, float gravityMod)
+    public void SetModifiers(int bounceMod, float sizeMod, float bouncinessMod, float massMod, float gravityMod, float damageMod)
     {
         maxBounces += bounceMod;
         bulletSize *= sizeMod;
@@ -41,6 +41,8 @@ public class Bullet : MonoBehaviour
         rb.mass = mass * massMod;
         
         rb.gravityScale = gravity * gravityMod;
+        
+        damage *= damageMod;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

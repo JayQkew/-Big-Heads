@@ -98,7 +98,8 @@ public class PlayerActions : MonoBehaviour
                 _statModifiers.BulletSizeMult,
                 _statModifiers.BulletBounceMult,
                 _statModifiers.BulletMassMult,
-                _statModifiers.BulletGravityMult);
+                _statModifiers.BulletGravityMult,
+                _statModifiers.DamageMult);
             bullet.GetComponent<Bullet>().rb.AddForce(_inputHandler.aim * shootForce * _statModifiers.FireForceMult, ForceMode2D.Impulse);
             
             currAmmo--;

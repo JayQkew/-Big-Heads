@@ -47,6 +47,12 @@ public class StatModifiers : MonoBehaviour
         }
     }
 
+    //can be negative, so bullets heal objects
+    public float DamageMult
+    {
+        get => damageMult;
+        set => damageMult = value;
+    }
 
     public float SpeedMult
     {
