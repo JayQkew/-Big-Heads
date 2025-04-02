@@ -798,7 +798,7 @@ MonoBehaviour:
   _rb: {fileID: 0}
   speedBase: 15
   acceleration: 2.5
-  jumpForce: 5
+  jumpForce: 10
   isGrounded: 0
   layerMask:
     serializedVersion: 2

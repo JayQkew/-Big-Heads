@@ -8,6 +8,7 @@ public class PlayerActions : MonoBehaviour
 {
     private InputHandler _inputHandler;
     private StatModifiers _statModifiers;
+    private Movement _movement;
 
     public bool headAttached = true;
 
@@ -40,6 +41,7 @@ public class PlayerActions : MonoBehaviour
     private void Awake() {
         _inputHandler = GetComponent<InputHandler>();
         _statModifiers = GetComponent<StatModifiers>();
+        _movement = GetComponent<Movement>();
         _head = head.GetComponent<Head>();
     }
 
@@ -71,6 +73,7 @@ public class PlayerActions : MonoBehaviour
         if (currTeleportTime * _statModifiers.TeleportReloadMult >= teleportTime) {
             body.position = head.position;
             head.position = body.position + Vector3.up;
+            _movement._rb.linearVelocity = head.GetComponent<Rigidbody2D>().linearVelocity;
 
             _head.AttachHead(true);
             headAttached = true;
