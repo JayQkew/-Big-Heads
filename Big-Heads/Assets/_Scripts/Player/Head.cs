@@ -7,9 +7,10 @@ using UnityEngine.Serialization;
     typeof(CircleCollider2D),
     typeof(SpringJoint2D))]
 [SelectionBase]
-public class Head : MonoBehaviour
+public class Head : MonoBehaviour , IDamageable
 {
     private StatModifiers _statModifiers;
+    private PlayerStats _playerStats;
     
     public Rigidbody2D rb;
     private CircleCollider2D _col;
@@ -27,6 +28,7 @@ public class Head : MonoBehaviour
     private void Awake()
     {
         _statModifiers = GetComponentInParent<StatModifiers>();
+        _playerStats = GetComponentInParent<PlayerStats>();
         
         rb = GetComponent<Rigidbody2D>();
         _col = GetComponent<CircleCollider2D>();
@@ -54,5 +56,9 @@ public class Head : MonoBehaviour
     {
         _joint.enabled = isAttached;
         if (isAttached) _joint.distance = 0;
+    }
+
+    public void Damage(float dmg) {
+        _playerStats.TakeDamage(dmg);
     }
 }
