@@ -826,12 +826,12 @@ MonoBehaviour:
   headBounceMult: 1
   headSizeMult: 1
   headMassMult: 1
-  headGravityMult: 1
+  headGravityMult: -1
   autoFire: 1
   extraAmmo: 0
   fireRateMult: 1
   fireForceMult: 1
-  extraBounces: 0
+  extraBounces: 2
   bulletSizeMult: 1
   bulletBounceMult: 1
   bulletMassMult: 1

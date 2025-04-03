@@ -10,7 +10,7 @@ using UnityEngine.Serialization;
 public class Head : MonoBehaviour, IDamageable
 {
     private StatModifiers _statModifiers;
-    private PlayerStats _playerStats;
+    private PlayerHealth _playerHealth;
 
     public Rigidbody2D rb;
     private CircleCollider2D _col;
@@ -29,7 +29,7 @@ public class Head : MonoBehaviour, IDamageable
 
     private void Awake() {
         _statModifiers = GetComponentInParent<StatModifiers>();
-        _playerStats = GetComponentInParent<PlayerStats>();
+        _playerHealth = GetComponentInParent<PlayerHealth>();
 
         rb = GetComponent<Rigidbody2D>();
         _col = GetComponent<CircleCollider2D>();
@@ -58,6 +58,6 @@ public class Head : MonoBehaviour, IDamageable
     }
 
     public void Damage(float dmg) {
-        _playerStats.TakeDamage(dmg);
+        _playerHealth.TakeDamage(dmg);
     }
 }
