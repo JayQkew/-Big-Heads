@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: New Player Stats
   m_EditorClassIdentifier: 
   health:
-    value: 0
-    minValue: 0
-    maxValue: 0
+    val: 0
+    min: 0
+    max: 0
   speed:
-    value: 0
-    minValue: 0
-    maxValue: 0
+    val: 0
+    min: 0
+    max: 0

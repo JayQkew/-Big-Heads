@@ -5,12 +5,12 @@ public class StatHandler : MonoBehaviour
 {
     public PlayerStats playerStats;
     
-    public HealthStat health;
-    public SpeedStat speed;
+    public IntStat health;
+    public FloatStat speed;
 
     private void Start() {
-        health = playerStats.health;
-        speed = playerStats.speed;
+        health = new IntStat(health.stat);
+        speed = new FloatStat(speed.stat);
         
         Debug.Log(health.Value);
         Debug.Log(speed.Value);
