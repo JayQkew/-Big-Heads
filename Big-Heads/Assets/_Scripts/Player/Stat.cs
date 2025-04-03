@@ -1,7 +1,13 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
+
+public interface IStat
+{
+    void ApplyModifier(IStatModifier modifier);
+}
+
+public interface IStatModifier{}
 
 [Serializable]
 public abstract class Stat<T> where T : struct, IComparable<T>
@@ -35,26 +41,50 @@ public abstract class Stat<T> where T : struct, IComparable<T>
 }
 
 [Serializable]
-public class IntStat : Stat<int>
+public class IntStat : Stat<int> , IStat
 {
     public StatInt stat;
 
+    public override int Value
+    {
+        get => stat.val;
+        set
+        {
+            stat.val = Clamp(value);
+        }
+    }
     public IntStat(StatInt statInt) : base(statInt.val, statInt.min, statInt.max) {
         stat.val = Value;
         stat.min = MinValue;
         stat.max = MaxValue;
     }
+
+    public void ApplyModifier(IStatModifier modifier) {
+        throw new NotImplementedException();
+    }
 }
 
 [Serializable]
-public class FloatStat : Stat<float>
+public class FloatStat : Stat<float> , IStat
 {
     public StatFloat stat;
 
+    public override float Value
+    {
+        get => stat.val;
+        set
+        {
+            stat.val = Clamp(value);
+        }
+    }
     public FloatStat(StatFloat statFloat) : base(statFloat.val, statFloat.min, statFloat.max) {
         stat.val = Value;
         stat.min = MinValue;
         stat.max = MaxValue;
+    }
+
+    public void ApplyModifier(IStatModifier modifier) {
+        throw new NotImplementedException();
     }
 }
 
@@ -74,4 +104,9 @@ public struct StatFloat
     [Space(10)]
     public float min;
     public float max;
+}
+
+public enum Stat
+{
+    
 }
