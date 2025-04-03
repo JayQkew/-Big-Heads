@@ -463,14 +463,95 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53dd8f8c549a48ca9828f872ad91feeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 11400000, guid: ae2c4927738a2e54889a0a7328b8fc98, type: 2}
-  health:
-    stat:
+  intStats:
+  - stat:
+      stat: 10
       val: 0
       min: 10
       max: 50
-  speed:
-    stat:
+  - stat:
+      stat: 13
+      val: 0
+      min: 10
+      max: 50
+  floatStats:
+  - stat:
+      stat: 0
+      val: 50
+      min: 10
+      max: 42.5
+  - stat:
+      stat: 1
+      val: 50
+      min: 10
+      max: 42.5
+  - stat:
+      stat: 2
+      val: 50
+      min: 10
+      max: 42.5
+  - stat:
+      stat: 3
+      val: 50
+      min: 10
+      max: 42.5
+  - stat:
+      stat: 4
+      val: 50
+      min: 10
+      max: 42.5
+  - stat:
+      stat: 5
+      val: 50
+      min: 10
+      max: 42.5
+  - stat:
+      stat: 6
+      val: 50
+      min: 10
+      max: 42.5
+  - stat:
+      stat: 7
+      val: 50
+      min: 10
+      max: 42.5
+  - stat:
+      stat: 8
+      val: 50
+      min: 10
+      max: 42.5
+  - stat:
+      stat: 9
+      val: 50
+      min: 10
+      max: 42.5
+  - stat:
+      stat: 11
+      val: 50
+      min: 10
+      max: 42.5
+  - stat:
+      stat: 12
+      val: 50
+      min: 10
+      max: 42.5
+  - stat:
+      stat: 14
+      val: 50
+      min: 10
+      max: 42.5
+  - stat:
+      stat: 15
+      val: 50
+      min: 10
+      max: 42.5
+  - stat:
+      stat: 16
+      val: 50
+      min: 10
+      max: 42.5
+  - stat:
+      stat: 17
       val: 50
       min: 10
       max: 42.5
