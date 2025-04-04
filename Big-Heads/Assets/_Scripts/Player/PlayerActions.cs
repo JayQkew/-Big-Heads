@@ -45,10 +45,11 @@ public class PlayerActions : MonoBehaviour
         _statHandler = GetComponent<StatHandler>();
         _movement = GetComponent<Movement>();
         _head = head.GetComponent<Head>();
+        
+        currAmmo = _statHandler.GetIntStat(Stat.Ammo);
     }
 
     private void Start() {
-        currAmmo = _statHandler.GetIntStat(Stat.Ammo).Value;
 
         if (_statModifiers.AutoFire) {
             _inputHandler.onShoot.AddListener(Shoot);
@@ -80,7 +81,7 @@ public class PlayerActions : MonoBehaviour
             _head.AttachHead(true);
             headAttached = true;
             currTeleportTime = 0;
-            currAmmo = _statHandler.GetIntStat(Stat.Ammo).Value;
+            currAmmo = _statHandler.GetIntStat(Stat.Ammo);
         }
     }
 

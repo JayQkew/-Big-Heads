@@ -27,11 +27,11 @@ public class StatHandler : MonoBehaviour
         return _stats.Find(s => s.Name == stat);
     }
 
-    public IntStat GetIntStat(Stat stats) {
-        return intStats.Find(s => s.Name == stats);
+    public int GetIntStat(Stat stat) {
+        return intStats.Find(s => s.Name == stat).Value;
     }
 
-    public FloatStat GetFloatStat(Stat stat) {
-        return floatStats.Find(s => s.Name == stat);
+    public float GetFloatStat(Stat stat) {
+        return floatStats.Find(s => s.Name == stat).Value;
     }
 }

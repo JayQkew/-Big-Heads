@@ -16,8 +16,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
     private void Start() {
-        // health = maxHealth * _statModifiers.HealthMult;
-        currHealth = _statHandler.GetIntStat(Stat.Health).Value;
+        currHealth = _statHandler.GetIntStat(Stat.Health);
     }
 
     public void TakeDamage(float damage) {
@@ -29,8 +28,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void Heal(float heal) {
         currHealth += heal;
-        if (currHealth > _statHandler.GetIntStat(Stat.Health).Value) {
-            currHealth = _statHandler.GetIntStat(Stat.Health).Value;
+        if (currHealth > _statHandler.GetIntStat(Stat.Health)) {
+            currHealth = _statHandler.GetIntStat(Stat.Health);
         }
     }
 }
