@@ -20,19 +20,19 @@ public class Bullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void SetModifiers(int bounceMod, float sizeMod, float bouncinessMod, float massMod, float gravityMod, float damageMod)
+    public void SetModifiers(int bounceMod, float sizeMod, float massMod, float gravityMod, float damageMod)
     {
-        maxBounces += bounceMod;
-        bulletSize *= sizeMod;
+        maxBounces = bounceMod;
         
+        bulletSize = sizeMod;
         _col.radius = bulletSize/2;
         transform.GetChild(0).localScale = Vector3.one * bulletSize;
         
-        rb.mass = mass * massMod;
+        rb.mass = massMod;
         
-        rb.gravityScale = gravity * gravityMod;
+        rb.gravityScale = gravityMod;
         
-        damage *= damageMod;
+        damage = damageMod;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

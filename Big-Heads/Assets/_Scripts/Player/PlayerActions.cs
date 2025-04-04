@@ -41,6 +41,10 @@ public class PlayerActions : MonoBehaviour
         _head = head.GetComponent<Head>();
     }
 
+    private void OnEnable() {
+        _statHandler = GetComponent<StatHandler>();
+    }
+
     private void Start() {
         currAmmo = _statHandler.GetIntStat(Stat.Ammo);
         currFireRate = _statHandler.GetFloatStat(Stat.FireRate);
@@ -91,17 +95,16 @@ public class PlayerActions : MonoBehaviour
     public void Shoot() {
         if (currAmmo > 0 && currFireRate >= _statHandler.GetFloatStat(Stat.FireRate)) {
             GameObject bullet = Instantiate(bulletPrefab, spawnPoint.position, Quaternion.identity);
-            bullet.GetComponent<Bullet>().SetModifiers(_statModifiers.ExtraBounces,
-                _statModifiers.BulletSizeMult,
-                _statModifiers.BulletBounceMult,
-                _statModifiers.BulletMassMult,
-                _statModifiers.BulletGravityMult,
-                _statModifiers.DamageMult);
+            bullet.GetComponent<Bullet>().SetModifiers(
+                _statHandler.GetIntStat(Stat.BulletBounces),
+                _statHandler.GetFloatStat(Stat.BulletSize),
+                _statHandler.GetFloatStat(Stat.BulletMass),
+                _statHandler.GetFloatStat(Stat.BulletGravity),
+                _statHandler.GetFloatStat(Stat.Damage));
             bullet.GetComponent<Bullet>().rb.AddForce(_inputHandler.aim * _statHandler.GetFloatStat(Stat.FireForce),
                 ForceMode2D.Impulse);
-            
-            // if(gameObject.name == "Player1")
             bullet.GetComponent<CircleCollider2D>().sharedMaterial = bulletBounceMat;
+            bullet.GetComponent<CircleCollider2D>().sharedMaterial.bounciness = _statHandler.GetFloatStat(Stat.BulletBounciness);
             currAmmo--;
             currFireRate = 0;
         }
