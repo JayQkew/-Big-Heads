@@ -28,10 +28,10 @@ public class StatHandler : MonoBehaviour
     }
 
     public int GetIntStat(Stat stat) {
-        return intStats.Find(s => s.Name == stat).Value;
+        return intStats.Find(s => s.stat.stat == stat).Value;
     }
 
     public float GetFloatStat(Stat stat) {
-        return floatStats.Find(s => s.Name == stat).Value;
+        return floatStats.Find(s => s.stat.stat == stat).Value;
     }
 }

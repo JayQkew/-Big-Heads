@@ -42,14 +42,19 @@ public class PlayerActions : MonoBehaviour
     private void Awake() {
         _inputHandler = GetComponent<InputHandler>();
         _statModifiers = GetComponent<StatModifiers>();
-        _statHandler = GetComponent<StatHandler>();
+        // _statHandler = GetComponent<StatHandler>();
         _movement = GetComponent<Movement>();
         _head = head.GetComponent<Head>();
         
+    }
+
+    private void OnEnable() {
+        _statHandler = GetComponent<StatHandler>();
         currAmmo = _statHandler.GetIntStat(Stat.Ammo);
     }
 
     private void Start() {
+        currAmmo = _statHandler.GetIntStat(Stat.Ammo);
 
         if (_statModifiers.AutoFire) {
             _inputHandler.onShoot.AddListener(Shoot);
