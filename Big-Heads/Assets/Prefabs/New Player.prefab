@@ -752,8 +752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76861850d173fc24ca798e0ab8b2ea28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
-  maxHealth: 10
+  currHealth: 0
   onDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -857,10 +856,10 @@ MonoBehaviour:
       min: 1
       max: 100
   - stat:
-      stat: 13
-      val: 0
-      min: 0
-      max: 10
+      stat: 10
+      val: 10
+      min: 1
+      max: 100
   floatStats:
   - stat:
       stat: 0

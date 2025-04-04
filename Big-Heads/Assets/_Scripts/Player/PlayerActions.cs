@@ -33,7 +33,6 @@ public class PlayerActions : MonoBehaviour
     public PhysicsMaterial2D bulletBounceMat;
 
     [Space(10)]
-    [SerializeField] private int maxAmmo;
     [SerializeField] private int currAmmo;
 
     [Space(10)]
@@ -43,12 +42,13 @@ public class PlayerActions : MonoBehaviour
     private void Awake() {
         _inputHandler = GetComponent<InputHandler>();
         _statModifiers = GetComponent<StatModifiers>();
+        _statHandler = GetComponent<StatHandler>();
         _movement = GetComponent<Movement>();
         _head = head.GetComponent<Head>();
     }
 
     private void Start() {
-        currAmmo = maxAmmo + _statModifiers.ExtraAmmo;
+        currAmmo = _statHandler.GetIntStat(Stat.Ammo).Value;
 
         if (_statModifiers.AutoFire) {
             _inputHandler.onShoot.AddListener(Shoot);
@@ -80,7 +80,7 @@ public class PlayerActions : MonoBehaviour
             _head.AttachHead(true);
             headAttached = true;
             currTeleportTime = 0;
-            currAmmo = maxAmmo + _statModifiers.ExtraAmmo;
+            currAmmo = _statHandler.GetIntStat(Stat.Ammo).Value;
         }
     }
 
