@@ -19,14 +19,6 @@ public class Head : MonoBehaviour, IDamageable
     [Header("Bounce")]
     [SerializeField] private PhysicsMaterial2D bounceMat;
 
-    [SerializeField] private float bounce;
-
-    [Header("Physics")]
-    [SerializeField] private float headSize;
-
-    [SerializeField] private float headMass;
-    [SerializeField] private float headGravity;
-
     private void Awake() {
         _statHandler = GetComponentInParent<StatHandler>();
         _playerHealth = GetComponentInParent<PlayerHealth>();
