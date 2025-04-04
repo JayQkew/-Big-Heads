@@ -771,13 +771,10 @@ MonoBehaviour:
   headAttached: 1
   head: {fileID: 8384735899224646136}
   body: {fileID: 2050352278246000842}
-  throwForce: 10
-  teleportTime: 5
   currTeleportTime: 0
   gun: {fileID: 5141905522333101254}
   bulletPrefab: {fileID: 3103416712996937802, guid: ed6bfc7c6ce5934449a824317d79575e, type: 3}
   spawnPoint: {fileID: 4288064423763592333}
-  shootForce: 20
   bulletBounceMat: {fileID: 0}
   currAmmo: 0
   fireRate: 1.5
@@ -796,9 +793,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 2050352278246000842}
   _rb: {fileID: 0}
-  speedBase: 15
-  acceleration: 2.5
-  jumpForce: 10
   isGrounded: 0
   layerMask:
     serializedVersion: 2
@@ -876,25 +870,25 @@ MonoBehaviour:
       min: 1
       max: 50
   - stat:
-      stat: 0
-      val: 0
-      min: 0
-      max: 0
+      stat: 6
+      val: 10
+      min: -50
+      max: 50
   - stat:
-      stat: 0
-      val: 0
-      min: 0
-      max: 0
+      stat: 5
+      val: 5
+      min: 0.5
+      max: 30
   - stat:
-      stat: 0
-      val: 0
+      stat: 13
+      val: 20
       min: 0
-      max: 0
+      max: 100
   - stat:
-      stat: 0
-      val: 0
+      stat: 12
+      val: 1.5
       min: 0
-      max: 0
+      max: 5
   - stat:
       stat: 0
       val: 0

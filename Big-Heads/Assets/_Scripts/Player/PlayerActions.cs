@@ -17,44 +17,33 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] private Transform head;
     [SerializeField] private Transform body;
     private Head _head;
-
-    [Header("Throw")]
-    [SerializeField] private float throwForce;
-
+    
     [Header("Teleport")]
-    [SerializeField] private float teleportTime;
     [SerializeField] private float currTeleportTime;
 
     [Header("Shooting")]
     [SerializeField] private GameObject gun;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform spawnPoint;
-    [SerializeField] private float shootForce;
     public PhysicsMaterial2D bulletBounceMat;
 
     [Space(10)]
     [SerializeField] private int currAmmo;
 
     [Space(10)]
-    [SerializeField] private float fireRate;
     [SerializeField] private float currFireRate;
 
     private void Awake() {
         _inputHandler = GetComponent<InputHandler>();
         _statModifiers = GetComponent<StatModifiers>();
-        // _statHandler = GetComponent<StatHandler>();
+        _statHandler = GetComponent<StatHandler>();
         _movement = GetComponent<Movement>();
         _head = head.GetComponent<Head>();
-        
-    }
-
-    private void OnEnable() {
-        _statHandler = GetComponent<StatHandler>();
-        currAmmo = _statHandler.GetIntStat(Stat.Ammo);
     }
 
     private void Start() {
         currAmmo = _statHandler.GetIntStat(Stat.Ammo);
+        currFireRate = _statHandler.GetFloatStat(Stat.FireRate);
 
         if (_statModifiers.AutoFire) {
             _inputHandler.onShoot.AddListener(Shoot);
@@ -78,7 +67,7 @@ public class PlayerActions : MonoBehaviour
     }
 
     private void Teleport() {
-        if (currTeleportTime * _statModifiers.TeleportReloadMult >= teleportTime) {
+        if (currTeleportTime >= _statHandler.GetFloatStat(Stat.Teleport)) {
             body.position = head.position;
             head.position = body.position + Vector3.up;
             _movement._rb.linearVelocity = head.GetComponent<Rigidbody2D>().linearVelocity;
@@ -91,7 +80,7 @@ public class PlayerActions : MonoBehaviour
     }
 
     private void Throw() {
-        Vector2 force = _inputHandler.aim * throwForce * _statModifiers.ThrowForceMult;
+        Vector2 force = _inputHandler.aim * _statHandler.GetFloatStat(Stat.Throw);
         _head.rb.linearVelocity = Vector2.zero;
         _head.rb.AddForce(force, ForceMode2D.Impulse);
 
@@ -100,7 +89,7 @@ public class PlayerActions : MonoBehaviour
     }
 
     public void Shoot() {
-        if (currAmmo > 0 && currFireRate >= fireRate) {
+        if (currAmmo > 0 && currFireRate >= _statHandler.GetFloatStat(Stat.FireRate)) {
             GameObject bullet = Instantiate(bulletPrefab, spawnPoint.position, Quaternion.identity);
             bullet.GetComponent<Bullet>().SetModifiers(_statModifiers.ExtraBounces,
                 _statModifiers.BulletSizeMult,
@@ -108,7 +97,7 @@ public class PlayerActions : MonoBehaviour
                 _statModifiers.BulletMassMult,
                 _statModifiers.BulletGravityMult,
                 _statModifiers.DamageMult);
-            bullet.GetComponent<Bullet>().rb.AddForce(_inputHandler.aim * shootForce * _statModifiers.FireForceMult,
+            bullet.GetComponent<Bullet>().rb.AddForce(_inputHandler.aim * _statHandler.GetFloatStat(Stat.FireForce),
                 ForceMode2D.Impulse);
             
             // if(gameObject.name == "Player1")

@@ -9,11 +9,7 @@ public class Movement : MonoBehaviour
     private InputHandler _inputHandler;
     private StatHandler _statHandler;
     
-    [Header("Movement")]
-    [SerializeField] private float speedBase;
-    [SerializeField] private float acceleration;
-    [SerializeField] private float jumpForce;
-    private Vector2 desiredVelocity;
+    private Vector2 _desiredVelocity;
 
     [Header("Ground Check")] 
     [SerializeField] private bool isGrounded;
@@ -31,7 +27,7 @@ public class Movement : MonoBehaviour
     private void Update()
     {
         // _rb.linearVelocity = new Vector2(_inputHandler.move.x * speedBase * _statModifiers.SpeedMult, _rb.linearVelocityY);
-        desiredVelocity = _inputHandler.move.normalized * _statHandler.GetFloatStat(Stat.Speed);
+        _desiredVelocity = _inputHandler.move.normalized * _statHandler.GetFloatStat(Stat.Speed);
         
         GroundedCheck();
     }
@@ -39,7 +35,7 @@ public class Movement : MonoBehaviour
     private void FixedUpdate() {
         Vector2 currentVelocity = _rb.linearVelocity;
 
-        float xVelocity = Mathf.Lerp(currentVelocity.x, desiredVelocity.x, Time.fixedDeltaTime * _statHandler.GetFloatStat(Stat.Acceleration));
+        float xVelocity = Mathf.Lerp(currentVelocity.x, _desiredVelocity.x, Time.fixedDeltaTime * _statHandler.GetFloatStat(Stat.Acceleration));
         Vector2 newVelocity = new Vector2(xVelocity, _rb.linearVelocityY);
         _rb.linearVelocity = newVelocity;
     }
