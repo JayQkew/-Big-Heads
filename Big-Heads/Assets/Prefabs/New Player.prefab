@@ -339,10 +339,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   bounceMat: {fileID: 0}
-  bounce: 0.5
-  headSize: 1
-  headMass: 1
-  headGravity: 1
 --- !u!1 &5141905522333101254
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,7 +532,6 @@ GameObject:
   - component: {fileID: 7440689668503567573}
   - component: {fileID: 1289516253630943178}
   - component: {fileID: 2841096975811686089}
-  - component: {fileID: 3796054946321297180}
   - component: {fileID: 6240341904491610182}
   m_Layer: 0
   m_Name: New Player
@@ -673,7 +668,7 @@ MonoBehaviour:
   aim: {x: 0, y: 0}
   shooting: 0
   jumping: 0
-  teleportThrowing: 0
+  teleportThrowing: 1
   onJump:
     m_PersistentCalls:
       m_Calls:
@@ -798,37 +793,6 @@ MonoBehaviour:
     m_Bits: 8
   offset: {x: 0.4, y: 0.05}
   rayDistance: 0.5
---- !u!114 &3796054946321297180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8453211275303929473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 464b21bcd63840e4c9f7b72d337eebee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthMult: 1
-  damageMult: 1
-  speedMult: 1
-  jumpMult: 1
-  teleportReloadMult: 1
-  throwForceMult: 1
-  headBounceMult: 1
-  headSizeMult: 1
-  headMassMult: 1
-  headGravityMult: -1
-  autoFire: 1
-  extraAmmo: 0
-  fireRateMult: 1
-  fireForceMult: 1
-  extraBounces: 2
-  bulletSizeMult: 1
-  bulletBounceMult: 1
-  bulletMassMult: 1
-  bulletGravityMult: 1
 --- !u!114 &6240341904491610182
 MonoBehaviour:
   m_ObjectHideFlags: 0
