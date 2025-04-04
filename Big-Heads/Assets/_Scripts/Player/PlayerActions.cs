@@ -29,7 +29,7 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private float shootForce;
-    [SerializeField] private PhysicsMaterial2D[] bulletBounceMat;
+    public PhysicsMaterial2D bulletBounceMat;
 
     [Space(10)]
     [SerializeField] private int maxAmmo;
@@ -105,9 +105,7 @@ public class PlayerActions : MonoBehaviour
                 ForceMode2D.Impulse);
             
             // if(gameObject.name == "Player1")
-            bullet.GetComponent<CircleCollider2D>().sharedMaterial = (gameObject.name == "Player1") ? 
-                bulletBounceMat[0] :
-                bulletBounceMat[1];
+            bullet.GetComponent<CircleCollider2D>().sharedMaterial = bulletBounceMat;
             currAmmo--;
             currFireRate = 0;
         }

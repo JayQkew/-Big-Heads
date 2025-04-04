@@ -6,7 +6,8 @@ public class PlayerManager : MonoBehaviour
 {
     private int playerCount;
     [SerializeField] private Color[] playerColors;
-    
+    [SerializeField] private PhysicsMaterial2D[] bulletBounceMats;
+
     public Transform[] _spawnPoints;
     public void OnPlayerJoined(PlayerInput playerInput)
     {
@@ -19,6 +20,7 @@ public class PlayerManager : MonoBehaviour
         }
 
         playerInput.GetComponent<InputHandler>().gamepad = playerInput.GetDevice<Gamepad>();
+        playerInput.GetComponent<PlayerActions>().bulletBounceMat = bulletBounceMats[playerCount];
         
         Debug.Log("Joined");
         playerCount++;
