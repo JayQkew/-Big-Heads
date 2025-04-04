@@ -841,6 +841,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53dd8f8c549a48ca9828f872ad91feeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoFire: 0
   intStats:
   - stat:
       stat: 0
@@ -916,6 +917,26 @@ MonoBehaviour:
   - stat:
       stat: 12
       val: 1.5
+      min: 0
+      max: 5
+  - stat:
+      stat: 7
+      val: 0.5
+      min: 0.1
+      max: 1
+  - stat:
+      stat: 8
+      val: 1
+      min: 0.25
+      max: 3
+  - stat:
+      stat: 9
+      val: 1
+      min: 0.1
+      max: 10
+  - stat:
+      stat: 18
+      val: 1
       min: 0
       max: 5
 --- !u!1 &8683166163230331971

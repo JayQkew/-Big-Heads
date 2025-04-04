@@ -9,7 +9,7 @@ using UnityEngine.Serialization;
 [SelectionBase]
 public class Head : MonoBehaviour, IDamageable
 {
-    private StatModifiers _statModifiers;
+    private StatHandler _statHandler;
     private PlayerHealth _playerHealth;
 
     public Rigidbody2D rb;
@@ -28,7 +28,7 @@ public class Head : MonoBehaviour, IDamageable
     [SerializeField] private float headGravity;
 
     private void Awake() {
-        _statModifiers = GetComponentInParent<StatModifiers>();
+        _statHandler = GetComponentInParent<StatHandler>();
         _playerHealth = GetComponentInParent<PlayerHealth>();
 
         rb = GetComponent<Rigidbody2D>();
@@ -42,14 +42,15 @@ public class Head : MonoBehaviour, IDamageable
     }
 
     private void Start() {
-        bounceMat.bounciness = bounce * _statModifiers.HeadBounceMult;
+        bounceMat.bounciness = _statHandler.GetFloatStat(Stat.HeadBounce);
         _col.sharedMaterial = bounceMat;
 
-        rb.mass = headMass * _statModifiers.HeadMassMult;
-        rb.gravityScale = headGravity * _statModifiers.HeadGravityMult;
+        rb.mass = _statHandler.GetFloatStat(Stat.HeadMass);
+        rb.gravityScale = _statHandler.GetFloatStat(Stat.HeadGravity);
 
-        _col.radius = headSize * _statModifiers.HeadSizeMult / 2;
-        transform.GetChild(0).localScale = Vector3.one * headSize * _statModifiers.HeadSizeMult;
+        _col.radius = _statHandler.GetFloatStat(Stat.HeadSize)/2;
+
+        transform.GetChild(0).localScale = Vector3.one * _statHandler.GetFloatStat(Stat.HeadSize);
     }
 
     public void AttachHead(bool isAttached) {
