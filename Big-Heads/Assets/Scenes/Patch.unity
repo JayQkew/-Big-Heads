@@ -345,6 +345,9 @@ MonoBehaviour:
   playerColors:
   - {r: 0.51886785, g: 0.6413014, b: 1, a: 1}
   - {r: 1, g: 0.4509434, b: 0.4509434, a: 1}
+  bulletBounceMats:
+  - {fileID: 6200000, guid: 86bc4c4508f0d534d8dca31fb1caf982, type: 2}
+  - {fileID: 6200000, guid: 395fb4cd48718a54d949b49df3233856, type: 2}
   _spawnPoints:
   - {fileID: 288711931}
   - {fileID: 1596218093}
