@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using NUnit.Framework.Internal;
 using UnityEngine;
 
 public class StatHandler : MonoBehaviour
@@ -27,5 +25,13 @@ public class StatHandler : MonoBehaviour
 
     public IStat GetStat(Stat stat) {
         return _stats.Find(s => s.Name == stat);
+    }
+
+    public IntStat GetIntStat(Stat stats) {
+        return intStats.Find(s => s.Name == stats);
+    }
+
+    public FloatStat GetFloatStat(Stat stat) {
+        return floatStats.Find(s => s.Name == stat);
     }
 }

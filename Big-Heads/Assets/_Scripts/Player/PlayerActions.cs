@@ -8,6 +8,7 @@ public class PlayerActions : MonoBehaviour
 {
     private InputHandler _inputHandler;
     private StatModifiers _statModifiers;
+    private StatHandler _statHandler;
     private Movement _movement;
 
     public bool headAttached = true;

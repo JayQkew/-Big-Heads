@@ -537,6 +537,7 @@ GameObject:
   - component: {fileID: 1289516253630943178}
   - component: {fileID: 2841096975811686089}
   - component: {fileID: 3796054946321297180}
+  - component: {fileID: 6240341904491610182}
   m_Layer: 0
   m_Name: New Player
   m_TagString: Untagged
@@ -778,9 +779,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3103416712996937802, guid: ed6bfc7c6ce5934449a824317d79575e, type: 3}
   spawnPoint: {fileID: 4288064423763592333}
   shootForce: 20
-  bulletBounceMat:
-  - {fileID: 6200000, guid: 86bc4c4508f0d534d8dca31fb1caf982, type: 2}
-  - {fileID: 6200000, guid: 395fb4cd48718a54d949b49df3233856, type: 2}
+  bulletBounceMat: {fileID: 0}
   maxAmmo: 7
   currAmmo: 0
   fireRate: 1.5
@@ -839,6 +838,110 @@ MonoBehaviour:
   bulletBounceMult: 1
   bulletMassMult: 1
   bulletGravityMult: 1
+--- !u!114 &6240341904491610182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8453211275303929473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53dd8f8c549a48ca9828f872ad91feeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intStats:
+  - stat:
+      stat: 0
+      val: 20
+      min: 1
+      max: 100
+  - stat:
+      stat: 13
+      val: 0
+      min: 0
+      max: 10
+  floatStats:
+  - stat:
+      stat: 0
+      val: 0
+      min: 0
+      max: 0
+  - stat:
+      stat: 0
+      val: 0
+      min: 0
+      max: 0
+  - stat:
+      stat: 0
+      val: 0
+      min: 0
+      max: 0
+  - stat:
+      stat: 0
+      val: 0
+      min: 0
+      max: 0
+  - stat:
+      stat: 0
+      val: 0
+      min: 0
+      max: 0
+  - stat:
+      stat: 0
+      val: 0
+      min: 0
+      max: 0
+  - stat:
+      stat: 0
+      val: 0
+      min: 0
+      max: 0
+  - stat:
+      stat: 0
+      val: 0
+      min: 0
+      max: 0
+  - stat:
+      stat: 0
+      val: 0
+      min: 0
+      max: 0
+  - stat:
+      stat: 0
+      val: 0
+      min: 0
+      max: 0
+  - stat:
+      stat: 0
+      val: 0
+      min: 0
+      max: 0
+  - stat:
+      stat: 0
+      val: 0
+      min: 0
+      max: 0
+  - stat:
+      stat: 0
+      val: 0
+      min: 0
+      max: 0
+  - stat:
+      stat: 0
+      val: 0
+      min: 0
+      max: 0
+  - stat:
+      stat: 0
+      val: 0
+      min: 0
+      max: 0
+  - stat:
+      stat: 0
+      val: 0
+      min: 0
+      max: 0
 --- !u!1 &8683166163230331971
 GameObject:
   m_ObjectHideFlags: 0

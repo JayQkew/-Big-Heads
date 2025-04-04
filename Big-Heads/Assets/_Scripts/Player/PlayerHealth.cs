@@ -1,35 +1,36 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private StatModifiers _statModifiers;
+    private StatHandler _statHandler;
     
-    [SerializeField] private float health;
-    [SerializeField] private float maxHealth;
+    [SerializeField] private float currHealth;
     
     public UnityEvent onDeath;
 
     private void Awake() {
-        _statModifiers = GetComponent<StatModifiers>();
+        _statHandler = GetComponent<StatHandler>();
     }
 
     private void Start() {
-        health = maxHealth * _statModifiers.HealthMult;
+        // health = maxHealth * _statModifiers.HealthMult;
+        currHealth = _statHandler.GetIntStat(Stat.Health).Value;
     }
 
     public void TakeDamage(float damage) {
-        health -= damage;
-        if (health <= 0) {
+        currHealth -= damage;
+        if (currHealth <= 0) {
             onDeath?.Invoke();
         }
     }
 
     public void Heal(float heal) {
-        health += heal;
-        if (health > maxHealth * _statModifiers.HealthMult) {
-            health = maxHealth * _statModifiers.HealthMult;
+        currHealth += heal;
+        if (currHealth > _statHandler.GetIntStat(Stat.Health).Value) {
+            currHealth = _statHandler.GetIntStat(Stat.Health).Value;
         }
     }
 }
