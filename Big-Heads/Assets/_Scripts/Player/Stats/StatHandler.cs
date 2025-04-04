@@ -13,26 +13,26 @@ public class StatHandler : MonoBehaviour
         for (int i = 0; i < intStats.Count; i++) {
             intStats[i] = new IntStat(intStats[i].stat);
             _stats.Add(intStats[i]);
-            Debug.Log(intStats[i].stat.stat + ": "+ intStats[i].Value);
+            Debug.Log(intStats[i].stat.name + ": "+ intStats[i].Value);
         }
 
         for (int i = 0; i < floatStats.Count; i++) {
             floatStats[i] = new FloatStat(floatStats[i].stat);
             _stats.Add(floatStats[i]);
-            Debug.Log(floatStats[i].stat.stat + ": " + floatStats[i].Value);
+            Debug.Log(floatStats[i].stat.name + ": " + floatStats[i].Value);
         }
         
     }
 
-    public IStat GetStat(Stat stat) {
-        return _stats.Find(s => s.Name == stat);
+    public IStat GetStat(Stat statName) {
+        return _stats.Find(s => s.Name == statName);
     }
 
-    public int GetIntStat(Stat stat) {
-        return intStats.Find(s => s.stat.stat == stat).Value;
+    public int GetIntStat(Stat statName) {
+        return intStats.Find(s => s.stat.name == statName).Value;
     }
 
-    public float GetFloatStat(Stat stat) {
-        return floatStats.Find(s => s.stat.stat == stat).Value;
+    public float GetFloatStat(Stat statName) {
+        return floatStats.Find(s => s.stat.name == statName).Value;
     }
 }

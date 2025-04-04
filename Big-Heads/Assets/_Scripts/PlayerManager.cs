@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -9,6 +10,13 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private PhysicsMaterial2D[] bulletBounceMats;
 
     public Transform[] _spawnPoints;
+
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.R)) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
     public void OnPlayerJoined(PlayerInput playerInput)
     {
         playerInput.gameObject.name = "Player" + (playerCount + 1);

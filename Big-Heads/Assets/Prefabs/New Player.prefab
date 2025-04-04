@@ -880,7 +880,7 @@ MonoBehaviour:
       max: 10
   - stat:
       stat: 12
-      val: 1.5
+      val: 0.5
       min: 0
       max: 5
   - stat:
