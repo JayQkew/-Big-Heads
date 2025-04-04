@@ -779,7 +779,6 @@ MonoBehaviour:
   spawnPoint: {fileID: 4288064423763592333}
   shootForce: 20
   bulletBounceMat: {fileID: 0}
-  maxAmmo: 7
   currAmmo: 0
   fireRate: 1.5
   currFireRate: 0
@@ -862,20 +861,20 @@ MonoBehaviour:
       max: 100
   floatStats:
   - stat:
-      stat: 0
-      val: 0
-      min: 0
-      max: 0
+      stat: 2
+      val: 15
+      min: 1
+      max: 50
   - stat:
-      stat: 0
-      val: 0
-      min: 0
-      max: 0
+      stat: 3
+      val: 2.5
+      min: 1
+      max: 10
   - stat:
-      stat: 0
-      val: 0
-      min: 0
-      max: 0
+      stat: 4
+      val: 10
+      min: 1
+      max: 50
   - stat:
       stat: 0
       val: 0

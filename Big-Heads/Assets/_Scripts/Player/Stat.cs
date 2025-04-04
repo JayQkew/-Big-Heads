@@ -122,6 +122,7 @@ public enum Stat
     Health,
     Damage,
     Speed,
+    Acceleration,
     Jump,
     Teleport,
     Throw,

@@ -7,7 +7,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private Transform body; 
     public Rigidbody2D _rb;
     private InputHandler _inputHandler;
-    private StatModifiers _statModifiers;
+    private StatHandler _statHandler;
     
     [Header("Movement")]
     [SerializeField] private float speedBase;
@@ -24,23 +24,22 @@ public class Movement : MonoBehaviour
     private void Awake()
     {
         _inputHandler = GetComponent<InputHandler>();
-        _statModifiers = GetComponent<StatModifiers>();
+        _statHandler = GetComponent<StatHandler>();
         _rb = body.GetComponent<Rigidbody2D>();
     }
 
     private void Update()
     {
         // _rb.linearVelocity = new Vector2(_inputHandler.move.x * speedBase * _statModifiers.SpeedMult, _rb.linearVelocityY);
-        desiredVelocity = _inputHandler.move.normalized * (speedBase * _statModifiers.SpeedMult);
+        desiredVelocity = _inputHandler.move.normalized * _statHandler.GetFloatStat(Stat.Speed);
         
         GroundedCheck();
     }
 
     private void FixedUpdate() {
         Vector2 currentVelocity = _rb.linearVelocity;
-        Vector2 velocityChange = desiredVelocity - currentVelocity;
 
-        float xVelocity = Mathf.Lerp(currentVelocity.x, desiredVelocity.x, Time.fixedDeltaTime * acceleration);
+        float xVelocity = Mathf.Lerp(currentVelocity.x, desiredVelocity.x, Time.fixedDeltaTime * _statHandler.GetFloatStat(Stat.Acceleration));
         Vector2 newVelocity = new Vector2(xVelocity, _rb.linearVelocityY);
         _rb.linearVelocity = newVelocity;
     }
@@ -61,7 +60,7 @@ public class Movement : MonoBehaviour
 
     public void Jump()
     {
-        if (isGrounded) _rb.AddForce(Vector2.up * jumpForce * _statModifiers.JumpMult, ForceMode2D.Impulse);
+        if (isGrounded) _rb.AddForce(Vector2.up * _statHandler.GetFloatStat(Stat.Jump), ForceMode2D.Impulse);
     }
     
 }
