@@ -5,6 +5,7 @@ public class StatHandler : MonoBehaviour
 {
     private List<IStat> _stats = new List<IStat>();
 
+    public bool autoFire;
     public List<IntStat> intStats;
     public List<FloatStat> floatStats;
 

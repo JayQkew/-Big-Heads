@@ -7,7 +7,6 @@ using UnityEngine.Serialization;
 public class PlayerActions : MonoBehaviour
 {
     private InputHandler _inputHandler;
-    private StatModifiers _statModifiers;
     private StatHandler _statHandler;
     private Movement _movement;
 
@@ -35,7 +34,6 @@ public class PlayerActions : MonoBehaviour
 
     private void Awake() {
         _inputHandler = GetComponent<InputHandler>();
-        _statModifiers = GetComponent<StatModifiers>();
         _statHandler = GetComponent<StatHandler>();
         _movement = GetComponent<Movement>();
         _head = head.GetComponent<Head>();
@@ -49,7 +47,7 @@ public class PlayerActions : MonoBehaviour
         currAmmo = _statHandler.GetIntStat(Stat.Ammo);
         currFireRate = _statHandler.GetFloatStat(Stat.FireRate);
 
-        if (_statModifiers.AutoFire) {
+        if (_statHandler.autoFire) {
             _inputHandler.onShoot.AddListener(Shoot);
             _inputHandler.onShootStart.RemoveListener(Shoot);
         }
