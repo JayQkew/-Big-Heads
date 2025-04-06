@@ -15,11 +15,13 @@ public class Card
         modifiers.Clear();
         
         foreach (IntModifier mod in intModifiers) {
-            modifiers.Add(mod);
+            IntModifier intMod = new IntModifier(mod.modifier);
+            modifiers.Add(intMod);
         }
 
         foreach (FloatModifier mod in floatModifiers) {
-            modifiers.Add(mod);
+            FloatModifier floatMod = new FloatModifier(mod.modifier);
+            modifiers.Add(floatMod);
         }
     }
 }

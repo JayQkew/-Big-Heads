@@ -16,7 +16,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
     private void Start() {
-        currHealth = _statHandler.GetIntStat(Stat.Health);
+        currHealth = _statHandler.IntStatValue(Stat.Health);
     }
 
     public void TakeDamage(float damage) {
@@ -28,8 +28,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void Heal(float heal) {
         currHealth += heal;
-        if (currHealth > _statHandler.GetIntStat(Stat.Health)) {
-            currHealth = _statHandler.GetIntStat(Stat.Health);
+        if (currHealth > _statHandler.IntStatValue(Stat.Health)) {
+            currHealth = _statHandler.IntStatValue(Stat.Health);
         }
     }
 }

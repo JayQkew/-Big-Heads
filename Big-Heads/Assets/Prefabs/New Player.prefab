@@ -266,7 +266,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &6014804422339511479
 CircleCollider2D:
@@ -907,17 +907,33 @@ MonoBehaviour:
   intModifiers: []
   floatModifiers: []
   card1:
-    name: 
-    intModifiers: []
+    name: Healthy
+    intModifiers:
+    - modifier:
+        name: 0
+        type: 0
+        amount: 15
     floatModifiers: []
   card2:
-    name: 
+    name: Speedy
     intModifiers: []
-    floatModifiers: []
+    floatModifiers:
+    - modifier:
+        name: 2
+        type: 1
+        amount: 1.5
   card3:
-    name: 
+    name: SharpShooter
     intModifiers: []
-    floatModifiers: []
+    floatModifiers:
+    - modifier:
+        name: 13
+        type: 1
+        amount: 2
+    - modifier:
+        name: 12
+        type: 1
+        amount: 1.25
 --- !u!1 &8683166163230331971
 GameObject:
   m_ObjectHideFlags: 0

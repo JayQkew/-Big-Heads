@@ -44,8 +44,8 @@ public class PlayerActions : MonoBehaviour
     }
 
     private void Start() {
-        currAmmo = _statHandler.GetIntStat(Stat.Ammo);
-        currFireRate = _statHandler.GetFloatStat(Stat.FireRate);
+        currAmmo = _statHandler.IntStatValue(Stat.Ammo);
+        currFireRate = _statHandler.FloatStatValue(Stat.FireRate);
 
         if (_statHandler.autoFire) {
             _inputHandler.onShoot.AddListener(Shoot);
@@ -69,7 +69,7 @@ public class PlayerActions : MonoBehaviour
     }
 
     private void Teleport() {
-        if (currTeleportTime >= _statHandler.GetFloatStat(Stat.Teleport)) {
+        if (currTeleportTime >= _statHandler.FloatStatValue(Stat.Teleport)) {
             body.position = head.position;
             head.position = body.position + Vector3.up;
             _movement._rb.linearVelocity = head.GetComponent<Rigidbody2D>().linearVelocity;
@@ -77,12 +77,12 @@ public class PlayerActions : MonoBehaviour
             _head.AttachHead(true);
             headAttached = true;
             currTeleportTime = 0;
-            currAmmo = _statHandler.GetIntStat(Stat.Ammo);
+            currAmmo = _statHandler.IntStatValue(Stat.Ammo);
         }
     }
 
     private void Throw() {
-        Vector2 force = _inputHandler.aim * _statHandler.GetFloatStat(Stat.Throw);
+        Vector2 force = _inputHandler.aim * _statHandler.FloatStatValue(Stat.Throw);
         _head.rb.linearVelocity = Vector2.zero;
         _head.rb.AddForce(force, ForceMode2D.Impulse);
 
@@ -91,18 +91,18 @@ public class PlayerActions : MonoBehaviour
     }
 
     public void Shoot() {
-        if (currAmmo > 0 && currFireRate >= _statHandler.GetFloatStat(Stat.FireRate)) {
+        if (currAmmo > 0 && currFireRate >= _statHandler.FloatStatValue(Stat.FireRate)) {
             GameObject bullet = Instantiate(bulletPrefab, spawnPoint.position, Quaternion.identity);
             bullet.GetComponent<Bullet>().SetModifiers(
-                _statHandler.GetIntStat(Stat.BulletBounces),
-                _statHandler.GetFloatStat(Stat.BulletSize),
-                _statHandler.GetFloatStat(Stat.BulletMass),
-                _statHandler.GetFloatStat(Stat.BulletGravity),
-                _statHandler.GetFloatStat(Stat.Damage));
-            bullet.GetComponent<Bullet>().rb.AddForce(_inputHandler.aim * _statHandler.GetFloatStat(Stat.FireForce),
+                _statHandler.IntStatValue(Stat.BulletBounces),
+                _statHandler.FloatStatValue(Stat.BulletSize),
+                _statHandler.FloatStatValue(Stat.BulletMass),
+                _statHandler.FloatStatValue(Stat.BulletGravity),
+                _statHandler.FloatStatValue(Stat.Damage));
+            bullet.GetComponent<Bullet>().rb.AddForce(_inputHandler.aim * _statHandler.FloatStatValue(Stat.FireForce),
                 ForceMode2D.Impulse);
             bullet.GetComponent<CircleCollider2D>().sharedMaterial = bulletBounceMat;
-            bullet.GetComponent<CircleCollider2D>().sharedMaterial.bounciness = _statHandler.GetFloatStat(Stat.BulletBounciness);
+            bullet.GetComponent<CircleCollider2D>().sharedMaterial.bounciness = _statHandler.FloatStatValue(Stat.BulletBounciness);
             currAmmo--;
             currFireRate = 0;
         }

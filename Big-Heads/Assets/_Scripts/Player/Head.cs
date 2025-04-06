@@ -34,15 +34,15 @@ public class Head : MonoBehaviour, IDamageable
     }
 
     private void Start() {
-        bounceMat.bounciness = _statHandler.GetFloatStat(Stat.HeadBounce);
+        bounceMat.bounciness = _statHandler.FloatStatValue(Stat.HeadBounce);
         _col.sharedMaterial = bounceMat;
 
-        rb.mass = _statHandler.GetFloatStat(Stat.HeadMass);
-        rb.gravityScale = _statHandler.GetFloatStat(Stat.HeadGravity);
+        rb.mass = _statHandler.FloatStatValue(Stat.HeadMass);
+        rb.gravityScale = _statHandler.FloatStatValue(Stat.HeadGravity);
 
-        _col.radius = _statHandler.GetFloatStat(Stat.HeadSize)/2;
+        _col.radius = _statHandler.FloatStatValue(Stat.HeadSize)/2;
 
-        transform.GetChild(0).localScale = Vector3.one * _statHandler.GetFloatStat(Stat.HeadSize);
+        transform.GetChild(0).localScale = Vector3.one * _statHandler.FloatStatValue(Stat.HeadSize);
     }
 
     public void AttachHead(bool isAttached) {

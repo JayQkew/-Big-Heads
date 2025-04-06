@@ -27,7 +27,7 @@ public class Movement : MonoBehaviour
     private void Update()
     {
         // _rb.linearVelocity = new Vector2(_inputHandler.move.x * speedBase * _statModifiers.SpeedMult, _rb.linearVelocityY);
-        _desiredVelocity = _inputHandler.move.normalized * _statHandler.GetFloatStat(Stat.Speed);
+        _desiredVelocity = _inputHandler.move.normalized * _statHandler.FloatStatValue(Stat.Speed);
         
         GroundedCheck();
     }
@@ -35,7 +35,7 @@ public class Movement : MonoBehaviour
     private void FixedUpdate() {
         Vector2 currentVelocity = _rb.linearVelocity;
 
-        float xVelocity = Mathf.Lerp(currentVelocity.x, _desiredVelocity.x, Time.fixedDeltaTime * _statHandler.GetFloatStat(Stat.Acceleration));
+        float xVelocity = Mathf.Lerp(currentVelocity.x, _desiredVelocity.x, Time.fixedDeltaTime * _statHandler.FloatStatValue(Stat.Acceleration));
         Vector2 newVelocity = new Vector2(xVelocity, _rb.linearVelocityY);
         _rb.linearVelocity = newVelocity;
     }
@@ -56,7 +56,7 @@ public class Movement : MonoBehaviour
 
     public void Jump()
     {
-        if (isGrounded) _rb.AddForce(Vector2.up * _statHandler.GetFloatStat(Stat.Jump), ForceMode2D.Impulse);
+        if (isGrounded) _rb.AddForce(Vector2.up * _statHandler.FloatStatValue(Stat.Jump), ForceMode2D.Impulse);
     }
     
 }

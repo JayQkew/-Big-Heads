@@ -6,23 +6,27 @@ public class StatHandler : MonoBehaviour
 {
     [Header("Deck")]
     public List<Card> deck = new List<Card>();
-    
+
     [Header("Stats & Modifiers")]
     public bool autoFire;
 
     [Space(15)]
     private List<IStat> _stats = new List<IStat>();
+
     public List<IntStat> intStats = new List<IntStat>();
     public List<FloatStat> floatStats = new List<FloatStat>();
 
     [Space(15)]
     public List<IntModifier> intModifiers = new List<IntModifier>();
+
     public List<FloatModifier> floatModifiers = new List<FloatModifier>();
 
     [Header("Testing")]
     public Card card1;
+
     public Card card2;
     public Card card3;
+
     private void Start() {
         for (int i = 0; i < intStats.Count; i++) {
             intStats[i] = new IntStat(intStats[i].stat);
@@ -39,8 +43,8 @@ public class StatHandler : MonoBehaviour
 
         for (int i = 0; i < floatStats.Count; i++) {
             floatStats[i] = new FloatStat(floatStats[i].stat);
-            _stats.Add(floatStats[i]); 
-            
+            _stats.Add(floatStats[i]);
+
             for (int j = 0; j < floatModifiers.Count; j++) {
                 floatModifiers[j] = new FloatModifier(floatModifiers[j].modifier);
                 if (floatModifiers[j].Name == floatStats[i].stat.name) {
@@ -54,12 +58,17 @@ public class StatHandler : MonoBehaviour
 
     public void AddCard(Card card) {
         deck.Add(card);
+        card.TransferModifiers();
         foreach (IModifier mod in card.modifiers) {
-            if (mod.GetType() == typeof(IntModifier)) {
-                intModifiers.Add((IntModifier)mod);
+            if (mod is IntModifier intMod) {
+                intModifiers.Add(intMod);
+                GetIntStat(intMod.Name).ApplyModifier(intMod);
+                Debug.Log(intModifiers.Count);
             }
-            else if (mod.GetType() == typeof(FloatModifier)) {
-                floatModifiers.Add((FloatModifier)mod);
+            else if (mod is FloatModifier floatMod) {
+                floatModifiers.Add(floatMod);
+                GetFloatStat(floatMod.Name).ApplyModifier(floatMod);
+                Debug.Log(floatModifiers.Count);
             }
         }
     }
@@ -82,11 +91,19 @@ public class StatHandler : MonoBehaviour
         return _stats.Find(s => s.Name == statName);
     }
 
-    public int GetIntStat(Stat statName) {
+    public int IntStatValue(Stat statName) {
         return intStats.Find(s => s.stat.name == statName).Value;
     }
 
-    public float GetFloatStat(Stat statName) {
+    public IntStat GetIntStat(Stat statName) {
+        return intStats.Find(s => s.Name == statName);
+    }
+
+    public float FloatStatValue(Stat statName) {
         return floatStats.Find(s => s.stat.name == statName).Value;
+    }
+
+    public FloatStat GetFloatStat(Stat statName) {
+        return floatStats.Find(s => s.Name == statName);
     }
 }
