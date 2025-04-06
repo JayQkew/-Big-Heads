@@ -35,10 +35,11 @@ public class IntModifier : Modifier<int>
     }
 
     public override int Apply(int value) {
-        if (modifier.type == Modifier.Additive) {
+        if (Type == Modifier.Additive) {
+            Debug.Log("Add Int");
             return value + modifier.amount;
         }
-
+        Debug.Log("Multiply Int");
         return value * modifier.amount;
     }
 }
@@ -48,18 +49,18 @@ public class FloatModifier : Modifier<float>
 {
     public ModifierFloat modifier;
 
-    public FloatModifier(ModifierFloat modifierFloat) : base(modifierFloat.name, modifierFloat.type,
-        modifierFloat.amount) {
+    public FloatModifier(ModifierFloat modifierFloat) : base(modifierFloat.name, modifierFloat.type, modifierFloat.amount) {
         modifier.name = Name;
         modifier.type = Type;
         modifier.amount = Amount;
     }
-    
+
     public override float Apply(float value) {
-        if (modifier.type == Modifier.Additive) {
+        if (Type == Modifier.Additive) {
+            Debug.Log("Add Float");
             return value + modifier.amount;
         }
-
+        Debug.Log("Multiply Float");
         return value * modifier.amount;
     }
 }

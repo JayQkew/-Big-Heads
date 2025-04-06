@@ -47,7 +47,7 @@ public class IntStat : Stat<int>
     public StatInt stat;
 
     public override void ApplyModifier(Modifier<int> modifier) {
-        throw new NotImplementedException();
+        Value = modifier.Apply(Value);
     }
 
     public override int Value
@@ -70,7 +70,7 @@ public class FloatStat : Stat<float>
     public StatFloat stat;
 
     public override void ApplyModifier(Modifier<float> modifier) {
-        throw new NotImplementedException();
+        Value = modifier.Apply(Value);
     }
 
     public override float Value
