@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,13 +10,19 @@ public class StatHandler : MonoBehaviour
     [Header("Stats & Modifiers")]
     public bool autoFire;
 
+    [Space(15)]
     private List<IStat> _stats = new List<IStat>();
     public List<IntStat> intStats = new List<IntStat>();
     public List<FloatStat> floatStats = new List<FloatStat>();
 
+    [Space(15)]
     public List<IntModifier> intModifiers = new List<IntModifier>();
     public List<FloatModifier> floatModifiers = new List<FloatModifier>();
 
+    [Header("Testing")]
+    public Card card1;
+    public Card card2;
+    public Card card3;
     private void Start() {
         for (int i = 0; i < intStats.Count; i++) {
             intStats[i] = new IntStat(intStats[i].stat);
@@ -54,6 +61,20 @@ public class StatHandler : MonoBehaviour
             else if (mod.GetType() == typeof(FloatModifier)) {
                 floatModifiers.Add((FloatModifier)mod);
             }
+        }
+    }
+
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.Alpha1)) {
+            AddCard(card1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            AddCard(card2);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3)) {
+            AddCard(card3);
         }
     }
 

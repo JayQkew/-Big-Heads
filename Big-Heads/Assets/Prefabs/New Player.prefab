@@ -805,104 +805,119 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53dd8f8c549a48ca9828f872ad91feeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deck: []
   autoFire: 0
   intStats:
   - stat:
-      stat: 0
+      name: 0
       val: 20
       min: 1
       max: 100
   - stat:
-      stat: 11
+      name: 11
       val: 10
       min: 1
       max: 100
   - stat:
-      stat: 14
+      name: 14
       val: 5
       min: 0
       max: 5
   floatStats:
   - stat:
-      stat: 2
+      name: 2
       val: 15
       min: 1
       max: 50
   - stat:
-      stat: 3
+      name: 3
       val: 2.5
       min: 1
       max: 10
   - stat:
-      stat: 4
+      name: 4
       val: 10
       min: 1
       max: 50
   - stat:
-      stat: 6
+      name: 6
       val: 10
       min: -50
       max: 50
   - stat:
-      stat: 5
+      name: 5
       val: 5
       min: 0.5
       max: 30
   - stat:
-      stat: 13
+      name: 13
       val: 20
       min: 0
       max: 100
   - stat:
-      stat: 15
+      name: 15
       val: 1
       min: 0.5
       max: 1
   - stat:
-      stat: 16
-      val: 0.5
-      min: 0.15
-      max: 2.5
-  - stat:
-      stat: 17
+      name: 17
       val: 1
       min: 0.1
       max: 25
   - stat:
-      stat: 18
+      name: 18
       val: 1
       min: -5
       max: 5
   - stat:
-      stat: 1
+      name: 1
       val: 1
       min: -2
       max: 10
   - stat:
-      stat: 12
-      val: 0.5
-      min: 0
+      name: 10
+      val: 1
+      min: -5
       max: 5
   - stat:
-      stat: 7
+      name: 7
       val: 0.5
       min: 0.1
       max: 1
   - stat:
-      stat: 8
+      name: 8
       val: 1
       min: 0.25
       max: 3
   - stat:
-      stat: 9
+      name: 9
       val: 1
       min: 0.1
       max: 10
   - stat:
-      stat: 18
+      name: 12
       val: 1
       min: 0
       max: 5
+  - stat:
+      name: 16
+      val: 0.5
+      min: 0.15
+      max: 2
+  intModifiers: []
+  floatModifiers: []
+  card1:
+    name: 
+    intModifiers: []
+    floatModifiers: []
+  card2:
+    name: 
+    intModifiers: []
+    floatModifiers: []
+  card3:
+    name: 
+    intModifiers: []
+    floatModifiers: []
 --- !u!1 &8683166163230331971
 GameObject:
   m_ObjectHideFlags: 0
