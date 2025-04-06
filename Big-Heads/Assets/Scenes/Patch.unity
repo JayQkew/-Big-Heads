@@ -421,9 +421,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b7123d9f695fc4bbca653ce8570e36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerColors:
-  - {r: 0.51886785, g: 0.6413014, b: 1, a: 1}
-  - {r: 1, g: 0.4509434, b: 0.4509434, a: 1}
+  playerMaterials:
+  - {fileID: 2100000, guid: 81561da4b0d061a449f19df56fd4782d, type: 2}
+  - {fileID: 2100000, guid: edb888bdad9ee8e43b708822c0f777e4, type: 2}
   bulletBounceMats:
   - {fileID: 6200000, guid: 86bc4c4508f0d534d8dca31fb1caf982, type: 2}
   - {fileID: 6200000, guid: 395fb4cd48718a54d949b49df3233856, type: 2}
@@ -1401,8 +1401,8 @@ Camera:
   m_GameObject: {fileID: 2094226106}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.3056603, g: 0.3056603, b: 0.3056603, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

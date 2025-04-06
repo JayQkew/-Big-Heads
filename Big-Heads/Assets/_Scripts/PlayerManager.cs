@@ -2,11 +2,12 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class PlayerManager : MonoBehaviour
 {
     private int playerCount;
-    [SerializeField] private Color[] playerColors;
+    [FormerlySerializedAs("playerColors")] [SerializeField] private Material[] playerMaterials;
     [SerializeField] private PhysicsMaterial2D[] bulletBounceMats;
 
     public Transform[] _spawnPoints;
@@ -24,7 +25,7 @@ public class PlayerManager : MonoBehaviour
 
         playerInput.transform.position = _spawnPoints[playerCount].position;
         foreach (SpriteRenderer sr in playerInput.GetComponentsInChildren<SpriteRenderer>()) {
-            sr.color = playerColors[playerCount];
+            sr.material = playerMaterials[playerCount];
         }
 
         playerInput.GetComponent<InputHandler>().gamepad = playerInput.GetDevice<Gamepad>();
