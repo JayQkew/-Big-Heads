@@ -3,9 +3,13 @@ using UnityEngine;
 
 public class StatHandler : MonoBehaviour
 {
-    private List<IStat> _stats = new List<IStat>();
-
+    [Header("Deck")]
+    public List<Card> deck = new List<Card>();
+    
+    [Header("Stats & Modifiers")]
     public bool autoFire;
+
+    private List<IStat> _stats = new List<IStat>();
     public List<IntStat> intStats = new List<IntStat>();
     public List<FloatStat> floatStats = new List<FloatStat>();
 
@@ -38,6 +42,18 @@ public class StatHandler : MonoBehaviour
             }
 
             Debug.Log(floatStats[i].stat.name + ": " + floatStats[i].Value);
+        }
+    }
+
+    public void AddCard(Card card) {
+        deck.Add(card);
+        foreach (IModifier mod in card.modifiers) {
+            if (mod.GetType() == typeof(IntModifier)) {
+                intModifiers.Add((IntModifier)mod);
+            }
+            else if (mod.GetType() == typeof(FloatModifier)) {
+                floatModifiers.Add((FloatModifier)mod);
+            }
         }
     }
 
